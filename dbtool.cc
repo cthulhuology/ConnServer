@@ -4,7 +4,7 @@
 
 #define SAVE(x,y) if ( #x == type ) { \
 	y* obj = y::alloc(d); \
-	obj->init("type=" + obj->type() + "&" + data); \
+	obj->init("type:" + obj->type() + "," + data); \
 	cerr << "Saving " << obj->tos() << endl; \
 	if (obj->save(d)) goto done; \
 	ok = false; \

@@ -31,8 +31,8 @@ string Message::build()
 	for (i = data.begin();i != data.end();) {
 		string k = (*i).first;
 		string v = (*i).second;
-		r +=  k + "=" + v;
-		if (++i !=  data.end()) r += "&";
+		r +=  k + ":" + v;
+		if (++i !=  data.end()) r += ",";
 	}
 	r += "~";
 	return r;
@@ -47,9 +47,9 @@ string Message::dump()
 			if ( r.empty()) {
 				r = i->first;
 			} else {
-				r += "&" + i->first;
+				r += "," + i->first;
 			}
-			r += "=";
+			r += ":";
 			r += i->second;
 		}
 	} else {
@@ -170,8 +170,8 @@ const char* Message::find_key(const char* m, vector<string>* v)
 {
 	const char* s = m;
 	if (s ==  NULL || *s == '\n' || *s == '\0' || *s == '\r') return NULL;
-	while ( s && *s != '\0' && *s != '=' && *s != '&' && *s != '\n' && *s != '\r') s++;
-	if (*s == '=') { // We have a well formed key)
+	while ( s && *s != '\0' && *s != ':' && *s != ',' && *s != '\n' && *s != '\r') s++;
+	if (*s == ':') { // We have a well formed key)
 		v->push_back(string(m,(int)(s-m)));
 		return find_value(s+1,v);
 	}
@@ -186,13 +186,13 @@ const char* Message::find_value(const char* m, vector<string>* v)
 		v->push_back("");
 		return NULL;
 	}
-	while ( s && *s != '\0' && *s != '=' && *s != '&' && *s != '\n' && *s != '\r') s++;
-	if (*s == '&' || *s == '\0' || *s == '\n' || *s == '\r') {
+	while ( s && *s != '\0' && *s != ':' && *s != ',' && *s != '\n' && *s != '\r') s++;
+	if (*s == ',' || *s == '\0' || *s == '\n' || *s == '\r') {
 		v->push_back(string(m,(int)(s-m)));
 		if (*s != '\0' && *s != '\n' && *s != '\r') return find_key(s+1,v);
 		return NULL;
 	}
-	cerr << "Message::find_value Invalid key=value pair, empty value, key=key [" << m << "]" << endl;
+	cerr << "Message::find_value Invalid key:value pair, empty value, key:key [" << m << "]" << endl;
 	return m;
 }
 

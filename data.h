@@ -66,18 +66,9 @@ using namespace std;
 class Cache;
 class CS;
 class Event;
-class League;
-class Member;
 class Message;
-class Options;
 class Player;
 class Post;
-class Replay;
-class Season;
-class Socket;
-class Table;
-class Team;
-class Tournament;
 
 class Indexable {
 	friend class Cache;
@@ -112,28 +103,6 @@ class Administrators : public Indexable {
 
 	COMMON_METHODS(Administrators)
 };
-
-class Bank : public Indexable {
-	public:
-		enum Pool { LEAGUE, SEASON, FREEBIE } pool;
-		Player* player;
-		Event* event;
-		int chips;
-
-	COMMON_METHODS(Bank)
-};
-
-class Cashier : public Indexable {
-	public:
-		enum Pool { LEAGUE, SEASON, FREEBIE } pool;
-		enum Kind { CASH, TOURNEY, FREE } kind;
-		Player* player;
-		Event* event;
-		int chips;
-		int cost;
-
-	COMMON_METHODS(Cashier)
-};	
 
 class CS : public Indexable {
 	public:
@@ -170,21 +139,8 @@ class Details : public Indexable {
 class Event : public Indexable {
 	public:
 		string name;
-		string notes;
-		string game;
+		string params;
 		int date;
-		bool playoff;
-		Player* owner;
-		Season* season;
-		Options* options;
-		list<Cashier*> cashiers;
-		list<Bank*> banks;
-		list<Table*> tables;
-		Tournament* tournament;
-
-		int create_tables();
-		int prune_tables();
-		static int max_seats[];
 
 	COMMON_METHODS(Event)
 };
@@ -198,82 +154,6 @@ class Friend : public Indexable {
 		string notes;	
 	
 	COMMON_METHODS(Friend)
-};
-
-class Seat {
-	public:
-		Player* player;
-		int seat;
-		int purse;
-
-		Seat();
-		~Seat();
-
-		string encode();
-		bool decode(const string& s);
-};
-
-class Results {
-	public:
-		string winnings;
-		list<string> actions;
-
-		Results();
-		~Results();
-		
-		string encode();
-		bool decode(const string& s);
-};
-
-class Game : public Indexable {
-	public:
-		static const int MAX_SEATS = 9;
-
-		bool done;
-		string game;
-		Event* event;
-		Table* table;
-		Replay* replay;
-		Seat seats[MAX_SEATS];
-		Results results[MAX_SEATS];
-		list<string> pots;
-	
-	COMMON_METHODS(Game)
-};
-
-class Invite : public Indexable {
-	public:
-		enum Kind { FRIEND, LEAGUE, TEAM, EVENT, ACCEPTED } kind;
-		Player* sender;	
-		union {
-			League* league;
-			Team* team;
-			Event* event;
-		} target;
-		enum Destination { PLAYER, EMAIL } dest;
-		struct {
-			Player* player;
-			struct {
-				string name;
-				string address;
-			} email; 
-		} recipient;
-		string message;
-
-	COMMON_METHODS(Invite)
-};
-
-class League : public Indexable {
-	public:
-		string name;
-		int num_members;
-		Player* commish;
-		list<Season*> seasons;
-		list<Member*> members;
-		list<Invite*> invites;
-		list<Post*> posts;
-
-	COMMON_METHODS(League)
 };
 
 #define LOGIN_CHECK if(!c->isBot() && (c->login() == NULL || c->login()->player == NULL)) return false;
@@ -292,49 +172,14 @@ class Login : public Indexable {
 	COMMON_METHODS(Login);
 };
 
-class Member : public Indexable {
-	public:
-		Player* player;
-		string access;
-	
-	COMMON_METHODS(Member)
-};
-
-class Options : public Indexable {
-	public:
-//		enum WinType { CHIPS, POSITION } win;
-		int value;
-		enum LimitType { LIMIT, POTLIMIT, NOLIMIT } limit;
-		enum BetStages { ONE, TWO } stages;
-		struct {
-			int min;
-			int max;
-			int no;
-		} buyin, bet[2];	
-		int ante;
-		struct {	
-			int small;
-			int big;
-		} blinds;
-		string wildcards;
-		int purchase;
-		int hilo;
-
-	COMMON_METHODS(Options)
-};
-
 class Player : public Indexable {
 	public:
 		string username;
 		string password;
 		string avatar;
 		Details* details;
-		list<League*> leagues;
 		list<Friend*> friends;
-		list<Invite*> invites;
-		list<Cashier*> cashiers;
-		list<Bank*> banks;
-		map<UInt64,Member*> league_member_map;
+		list<Post*> posts;
 
 	COMMON_METHODS(Player)
 };
@@ -349,147 +194,7 @@ class Post : public Indexable {
 		int last;
 		string body;
 
-		string display();
-
 	COMMON_METHODS(Post)	
-};
-
-class Replay : public Indexable {
-	private:
-		static Player* default_player;
-	public:
-		list<string> messages;
-
-		bool add(Message& m);
-		bool send(Socket* s, int frame);
-
-		static Player* player();
-
-	COMMON_METHODS(Replay);
-
-};
-
-class HSP {
-	public:
-		Player* p;
-		string h;
-
-		HSP();
-		HSP(Player* a, const string& s);
-		~HSP();
-		static string encode(list<HSP> l);
-		static list<HSP> decode(const string& s);
-};
-
-class PVP {
-	public:
-		Player* p;
-		Player* op;
-
-		PVP();
-		PVP(Player* a, Player* b);
-		~PVP();
-		static string encode(list<PVP> l);
-		static list<PVP> decode(const string& s);
-};
-
-class Season : public Indexable {
-	public:
-		string name;
-		enum SeasonState { PRESEASON, ACTIVE, POSTSEASON } state;
-		League* league;
-		Event* current;
-		list<Event*> events;
-		list<Event*> playoffs;
-		string has_playoffs;
-		string ranking;
-		string qualifiers;
-		list<Team*> teams;
-		list<Player*> stats;
-		list<HSP> holdem_stats;
-		list<PVP> opp_stats;
-		list<Post*> posts;
-
-		bool addEvents(list<Event*>& el);
-		bool addPlayoffs(list<Event*>& el, string qual);
-		bool hasStats(Player* p);
-		bool hasHoldemStats(Player* p, const string& h);
-		bool hasOppStats(Player*p, Player* o);
-	
-	COMMON_METHODS(Season)
-};
-
-class Table : public Indexable {
-	public:
-		static const int MAX_SEATS = 9;
-
-		string name;
-		Event* event;
-		list<Game*> games;
-		Game* current;
-		Seat seats[MAX_SEATS];
-
-	COMMON_METHODS(Table)
-};
-
-class Team : public Indexable {
-	public:
-		string name;
-		Player* captain;
-		list<Player*> players;
-		int points;
-		int position;
-
-	COMMON_METHODS(Team)
-};
-
-struct round {
-	int duration;
-	int small_blind;
-	int big_blind;
-	int ante;
-	int break_time;
-};
-class tournament_seating{
-	public:
-		Player* player;
-		Table* table;
-		int seat;
-		int purse;
-		int position;
-
-		tournament_seating();
-		~tournament_seating();
-		bool operator==(const tournament_seating& ts);
-}; 
-
-class Tournament : public Indexable {
-	public:
-		int current;
-		int cost;
-		int chips;
-		struct {
-			int cost;
-			int chips;
-			int threshold;
-			int end_round;
-		} rebuys;
-		struct {
-			int cost;
-			int chips;
-		} addon;
-		list<tournament_seating> seating;
-		list<struct round> rounds;
-
-		bool add_player(Player* p);
-		bool remove_player(Player* p);
-		bool update_player(Player* p, Table* t, int seat, int chips, int position);
-		bool seat_players(list<Table*>& t);
-		string get_seating();
-		bool fabricate_rounds();
-		bool is_registered(Player* p);
-
-	COMMON_METHODS(Tournament)
 };
 
 class Cache : public Indexable {
