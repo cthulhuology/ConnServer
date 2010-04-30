@@ -1,0 +1,99 @@
+#!/bin/bash
+
+. .config
+
+case "$ARCH" in 
+MACOSX)
+	exec ./CS.osx $1 $2
+	;;
+*)
+	;;
+esac
+
+case "$2" in 
+prod)
+	echo "Using agile settings"
+	CSBIN=/opt/CS/ConnServer
+	CSDBCONN="dbname=cs user=cs"
+	CSCACHEID=844424930131968
+	CSID=3
+	CSROOT=/opt/CS/invites
+	CSPID=/opt/CS/ConnServer.pid
+	CSLOG=/opt/CS/ConnServer.log
+	CSMODULEHOME=/opt/CS/modules
+	CSPYMODULEHOME=/opt/CS/modules/python
+	;;
+*)
+	case "$LOGNAME" in
+	dave)
+		echo "Using dave's settings"
+		CSPATH=/home/$LOGNAME/CS
+		CSBIN=$CSPATH/ConnServer
+		CSDBCONN="dbname=devel user=dave"
+		CSROOT="/home/dave/CS/invites"
+		CSID=1
+		CSCACHEID=281474976710656
+		CSPID=$CSPATH/ConnServer.pid
+		CSLOG=$CSPATH/ConnServer.log
+		CSMODULEHOME=$CSPATH/modules
+		CSPYMODULEHOME=$CSPATH/modules/python
+		export LD_LIBRARY_PATH=$CSPATH
+		;;
+	gene)
+		echo "Using gene's settings"
+		CSPATH=/home/$LOGNAME/CS
+		CSBIN=$CSPATH/ConnServer
+		CSROOT=/home/$LOGNAME/CS/invites
+		CSDBCONN="dbname=devel user=gene"
+		CSID=2
+		CSCACHEID=562949953421312
+		CSPID=$CSPATH/ConnServer.pid
+		CSLOG=$CSPATH/ConnServer.log
+		CSMODULEHOME=$CSPATH/modules
+		CSPYMODULEHOME=$CSPATH/modules/python
+		export LD_LIBRARY_PATH=$CSPATH
+		;;
+	*)
+		echo "UNAUTHORIZED USAGE"
+		exit
+		;;
+	esac
+	;;
+esac
+
+case "$1" in
+	?|-h|help)
+		echo "Usage: $O [[start]|stop|tail|reload|restart] [[prod]]"
+		;;
+	stop)
+		echo "Stopping ConnServer: $CSPID " `cat $CSPID`
+		kill `cat $CSPID`
+		;;
+	tail)
+		tail -f $CSLOG
+		;;
+	reload)
+		echo "Reloading ConnServer modules"
+		kill -1 `cat $CSPID`
+		;;
+	restart)
+		echo "Restarting ConnServer"
+		kill -2 `cat $CSPID`
+		;;
+	start)
+		echo "Starting ConnServer"
+		touch $CSPID $CSLOG
+		export CSDBCONN
+		export CSMODULEHOME
+		export CSPYMODULEHOME
+		export CSID
+		export CSROOT
+		export CSCACHEID
+		export CSLOG
+		export CSPID
+		exec $CSBIN  &
+		;;
+	*)
+		echo "Usage ./CS [start|stop|tail|reload|restart] [prod]"
+	;;
+esac

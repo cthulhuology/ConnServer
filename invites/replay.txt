@@ -1,0 +1,20 @@
+From: The Commish <commish@ihomegame.com>
+To: $NAME $EMAIL
+Subject: $SENDER would like you to watch this game
+
+$NAME
+
+$SENDER would like you to watch a replay of one of the games at iHomeGame.com.
+
+$SENDER says:
+
+$MESSAGE
+
+Simply click or enter the following URL to watch it:
+
+	http://www.ihomegame.com/iHomeGame.com/dave/iHomeGame_main.swf?replay_id=$REPLAY
+
+Sincerely,
+
+The Commish
+

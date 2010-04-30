@@ -1,0 +1,31 @@
+#!/bin/bash
+
+echo "Using dave's settings"
+. CSENV
+
+case "$1" in
+	?|-h|help)
+		echo "Usage: $O [[start]|stop|tail|reload|restart] [[prod]]"
+		;;
+	stop)
+		echo "Stopping ConnServer" `cat $CSPID`
+		kill `cat $CSPID` && rm $CSPID
+		;;
+	tail)
+		tail -f $CSLOG
+		;;
+	reload)
+		echo "Reloading ConnServer modules"
+		kill -1 `cat $CSPID`
+		;;
+	restart)
+		echo "Restarting ConnServer"
+		kill -2 `cat $CSPID`
+		;;
+	start|*)
+		echo "Starting ConnServer"
+		touch $CSPID $CSLOG
+		chmod 0660 $CSPID $CSLOG
+		exec $CSBIN &
+	;;
+esac

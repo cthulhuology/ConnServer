@@ -1,0 +1,662 @@
+Spawining slave
+Respawn server
+Server::Server connecting to database
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Database::Database connected dbname=devel user=dave
+Server::Server creating cache
+[DBPool::grab] 19 handles remaining
+[DBPool::release] 20 handles remaining
+Sever::Server loading CS settings: 1
+[Cache::find] looking up 1
+[Cache::find] Looking up id 1
+[Cache::find] Not in cache, loading 1
+[Indexable::load] SELECT id, value FROM cache_table WHERE id = 1
+[DBPool::grab] 19 handles remaining
+[Indexable::load] Database is 0x10054c3f0
+[Indexable::load] Result is 0x100558e90
+[DBPool::release] 20 handles remaining
+[Indexable::load] Result is Success!
+[Indexable::load] Init with value: type=2CS&name=dave.dloh.org&ipaddr=0.0.0.0&port=9996&nat_port=9996
+[CS::init] With string: type=2CS&name=dave.dloh.org&ipaddr=0.0.0.0&port=9996&nat_port=9996
+[CS::init] type: 2CS vs. 2CS
+[Cache::find] got empty string returning NULL
+[Indexable::load] released
+[Cache::find] Loaded 1
+Server::Server initializing socket pool
+Sever::Server initializing user mappings
+Server::Server creating socket
+[Socket::Socket] socket 0x100559360 conned = yes
+Server::Server initializing registry
+attempting to load /Users/dave/CS/modules/.depend modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/Makefile modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/Makefile.LINUX modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/Makefile.MACOSX modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/Makefile.generic modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/acl_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/acl_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/acl_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/acl_modules_131.dylib
+Registry::associate registering message setAccess
+Registry::associate registering message getAccess
+attempting to load /Users/dave/CS/modules/acl_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/admin.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/admin.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/admin_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/admin_131.dylib
+Registry::associate registering message admin
+attempting to load /Users/dave/CS/modules/admin_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/board_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/board_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/board_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/board_modules_131.dylib
+Registry::associate registering message add-post
+Registry::associate registering message remove-post
+Registry::associate registering message posts
+Registry::associate registering message league-post
+Registry::associate registering message season-post
+attempting to load /Users/dave/CS/modules/board_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/bot_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/bot_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/bot_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/bot_modules_131.dylib
+Registry::associate registering message bot-login
+Registry::associate registering message bot-send
+Registry::associate registering message bot-disconnect
+attempting to load /Users/dave/CS/modules/bot_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/build.sh modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/cashier_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/cashier_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/cashier_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/cashier_modules_131.dylib
+Registry::associate registering message putontable
+Registry::associate registering message rebuy
+Registry::associate registering message addon
+Registry::associate registering message cashier
+Registry::associate registering message bank
+Registry::associate registering message tally-season
+Registry::associate registering message tally-event
+attempting to load /Users/dave/CS/modules/cashier_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/chat_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/chat_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/chat_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/chat_modules_131.dylib
+Registry::associate registering message chat
+Registry::associate registering message alert
+Registry::associate registering message online
+Registry::associate registering message who
+attempting to load /Users/dave/CS/modules/chat_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/event_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/event_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/event_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/event_modules_131.dylib
+Registry::associate registering message new-event
+Registry::associate registering message cancel-event
+Registry::associate registering message pending
+Registry::associate registering message replay-list
+Registry::associate registering message replay
+Registry::associate registering message next
+attempting to load /Users/dave/CS/modules/event_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/friends_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/friends_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/friends_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/friends_modules_131.dylib
+Registry::associate registering message add-friend
+Registry::associate registering message accept-friend
+Registry::associate registering message remove-friend
+Registry::associate registering message update-friend
+Registry::associate registering message friends
+attempting to load /Users/dave/CS/modules/friends_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/league_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/league_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/league_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/league_modules_131.dylib
+Registry::associate registering message new-league
+Registry::associate registering message get-leagues
+Registry::associate registering message join-league
+Registry::associate registering message remove-member
+Registry::associate registering message league-invite-email
+Registry::associate registering message league-invite-player
+Registry::associate registering message league-roster
+Registry::associate registering message commish-transfer
+attempting to load /Users/dave/CS/modules/league_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/mail_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/mail_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/mail_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/mail_modules_131.dylib
+Registry::associate registering message send-replay
+Registry::associate registering message send-invite
+Registry::associate registering message send-password
+attempting to load /Users/dave/CS/modules/mail_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/module_version modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/pingpong.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/pingpong.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/pingpong_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/pingpong_131.dylib
+Registry::associate registering message ping
+Registry::associate registering message pong
+Registry::associate registering message getcurrenthour
+Registry::associate registering message time
+attempting to load /Users/dave/CS/modules/pingpong_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/player_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/player_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/player_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/player_modules_131.dylib
+Registry::associate registering message login
+Registry::associate registering message register
+Registry::associate registering message disconnect
+Registry::associate registering message getdetails
+Registry::associate registering message setdetails
+Registry::associate registering message quit
+Registry::associate registering message setavatar
+Registry::associate registering message getavatar
+attempting to load /Users/dave/CS/modules/player_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/poker_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/poker_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/poker_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/poker_modules_131.dylib
+Registry::associate registering message newgame
+Registry::associate registering message end-game
+Registry::associate registering message end-event
+Registry::associate registering message get-game-state
+Registry::associate registering message set-game-state
+Registry::associate registering message seat
+Registry::associate registering message start
+Registry::associate registering message dealer
+Registry::associate registering message reveal
+Registry::associate registering message turn
+Registry::associate registering message draw
+Registry::associate registering message cards
+Registry::associate registering message pass
+Registry::associate registering message discard
+Registry::associate registering message order
+Registry::associate registering message choose
+Registry::associate registering message show
+Registry::associate registering message blinds
+Registry::associate registering message ante
+Registry::associate registering message fold
+Registry::associate registering message call
+Registry::associate registering message bet
+Registry::associate registering message raise
+Registry::associate registering message check
+Registry::associate registering message auto-fold
+Registry::associate registering message leavetable
+Registry::associate registering message winner
+Registry::associate registering message state
+Registry::associate registering message replay-state
+Registry::associate registering message community
+Registry::associate registering message rabbit
+Registry::associate registering message done
+Registry::associate registering message timer
+Registry::associate registering message change-state
+attempting to load /Users/dave/CS/modules/poker_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/pymod.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/pymod.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/pymod_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/pymod_131.dylib
+attempting to load /Users/dave/CS/modules/pymod_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/season_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/season_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/season_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/season_modules_131.dylib
+Registry::associate registering message new-season
+Registry::associate registering message get-seasons
+Registry::associate registering message my-seasons
+Registry::associate registering message get-events
+Registry::associate registering message cancel-season
+Registry::associate registering message my-events
+attempting to load /Users/dave/CS/modules/season_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/stats_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/stats_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/stats_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/stats_modules_131.dylib
+Registry::associate registering message populate-stats
+Registry::associate registering message league-stats
+Registry::associate registering message season-stats
+Registry::associate registering message game-stats
+Registry::associate registering message player-stats
+Registry::associate registering message opponent-stats
+Registry::associate registering message holdem-stats
+Registry::associate registering message create-stats
+Registry::associate registering message create-opp-stats
+Registry::associate registering message create-holdem-stats
+Registry::associate registering message season-ranks
+Registry::associate registering message rank-players
+attempting to load /Users/dave/CS/modules/stats_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/table_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/table_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/table_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/table_modules_131.dylib
+Registry::associate registering message gametypes
+Registry::associate registering message event-standings
+Registry::associate registering message tables
+Registry::associate registering message options
+Registry::associate registering message getAvatars
+Registry::associate registering message my-tables
+attempting to load /Users/dave/CS/modules/table_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/test_module.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/test_module.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/test_module_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/test_module_131.dylib
+Registry::associate registering message test
+attempting to load /Users/dave/CS/modules/test_module_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/tournament_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/tournament_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/tournament_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/tournament_modules_131.dylib
+Registry::associate registering message tournament-signup
+Registry::associate registering message tournament-withdraw
+Registry::associate registering message tournament-seating
+Registry::associate registering message tournament-position
+Registry::associate registering message seat-tournament
+Registry::associate registering message reseat-tournament
+Registry::associate registering message register-tournament
+Registry::associate registering message start-round
+Registry::associate registering message last-hand
+Registry::associate registering message start-break
+Registry::associate registering message table-seating
+Registry::associate registering message pad-rounds
+Registry::associate registering message tournament-timer
+attempting to load /Users/dave/CS/modules/tournament_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/watcher_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/watcher_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/watcher_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/watcher_modules_131.dylib
+Registry::associate registering message register-watcher
+Registry::associate registering message start-event
+Registry::associate registering message start-pickup
+Registry::associate registering message table-started
+attempting to load /Users/dave/CS/modules/watcher_modules_131.so modex=.dylib sizeof modex=7
+Server::Server creating lobby
+Room::Room creating room lobby
+[DBPool::grab] 19 handles remaining
+[Server::loadEvents] SELECT events.events FROM events WHERE server = 1
+Database::query:ERROR:  relation "events" does not exist
+LINE 1: SELECT events.events FROM events WHERE server = 1
+                                  ^
+
+[Server::loadEvents] failed 
+[DBPool::release] 20 handles remaining
+Server::init failed to load events
+attempting to load /Users/dave/CS/modules/.depend modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/Makefile modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/Makefile.LINUX modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/Makefile.MACOSX modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/Makefile.generic modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/acl_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/acl_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/acl_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/acl_modules_131.dylib
+attempting to load /Users/dave/CS/modules/acl_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/admin.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/admin.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/admin_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/admin_131.dylib
+attempting to load /Users/dave/CS/modules/admin_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/board_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/board_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/board_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/board_modules_131.dylib
+attempting to load /Users/dave/CS/modules/board_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/bot_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/bot_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/bot_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/bot_modules_131.dylib
+attempting to load /Users/dave/CS/modules/bot_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/build.sh modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/cashier_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/cashier_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/cashier_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/cashier_modules_131.dylib
+attempting to load /Users/dave/CS/modules/cashier_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/chat_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/chat_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/chat_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/chat_modules_131.dylib
+attempting to load /Users/dave/CS/modules/chat_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/event_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/event_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/event_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/event_modules_131.dylib
+attempting to load /Users/dave/CS/modules/event_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/friends_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/friends_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/friends_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/friends_modules_131.dylib
+attempting to load /Users/dave/CS/modules/friends_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/league_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/league_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/league_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/league_modules_131.dylib
+attempting to load /Users/dave/CS/modules/league_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/mail_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/mail_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/mail_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/mail_modules_131.dylib
+attempting to load /Users/dave/CS/modules/mail_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/module_version modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/pingpong.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/pingpong.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/pingpong_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/pingpong_131.dylib
+attempting to load /Users/dave/CS/modules/pingpong_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/player_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/player_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/player_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/player_modules_131.dylib
+attempting to load /Users/dave/CS/modules/player_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/poker_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/poker_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/poker_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/poker_modules_131.dylib
+attempting to load /Users/dave/CS/modules/poker_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/pymod.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/pymod.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/pymod_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/pymod_131.dylib
+attempting to load /Users/dave/CS/modules/pymod_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/season_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/season_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/season_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/season_modules_131.dylib
+attempting to load /Users/dave/CS/modules/season_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/stats_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/stats_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/stats_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/stats_modules_131.dylib
+attempting to load /Users/dave/CS/modules/stats_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/table_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/table_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/table_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/table_modules_131.dylib
+attempting to load /Users/dave/CS/modules/table_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/test_module.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/test_module.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/test_module_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/test_module_131.dylib
+attempting to load /Users/dave/CS/modules/test_module_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/tournament_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/tournament_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/tournament_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/tournament_modules_131.dylib
+attempting to load /Users/dave/CS/modules/tournament_modules_131.so modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/watcher_modules.cc modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/watcher_modules.h modex=.dylib sizeof modex=7
+attempting to load /Users/dave/CS/modules/watcher_modules_131.dylib modex=.dylib sizeof modex=7
+Loading module /Users/dave/CS/modules/watcher_modules_131.dylib
+attempting to load /Users/dave/CS/modules/watcher_modules_131.so modex=.dylib sizeof modex=7
+[Server::server] before wait time Thu Apr 29 21:06:01 2010
+[Server::server] after wait time Thu Apr 29 21:06:04 2010
+Ready sockets 1
+[Socket::Socket] socket 0x100559c70 conned = yes
+[Server::server] before wait time Thu Apr 29 21:06:04 2010
+[Server::server] after wait time Thu Apr 29 21:06:06 2010
+Ready sockets 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read -1
+[Server::process message [msg=ping] string []
+[Socket::connected] conned? yes
+[Socket::in] read -1
+[Socket::connected] conned? yes
+[Server::server] before wait time Thu Apr 29 21:06:06 2010
+[Server::server] after wait time Thu Apr 29 21:06:09 2010
+Ready sockets 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read -1
+[Server::process message [msg=time] string []
+[Socket::connected] conned? yes
+[Socket::in] read -1
+[Socket::connected] conned? yes
+[Server::server] before wait time Thu Apr 29 21:06:09 2010
+[Server::server] after wait time Thu Apr 29 21:06:21 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:06:21 2010
+[Server::server] after wait time Thu Apr 29 21:06:25 2010
+Ready sockets 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read -1
+[Server::process message [msg=quit] string []
+Server::process failed module process msg=quit
+[Socket::disconnect] socket 0x100559c70
+[Socket::disconnect] disconnecting player
+[Server::server] before wait time Thu Apr 29 21:06:25 2010
+[Server::server] after wait time Thu Apr 29 21:06:41 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:06:41 2010
+[Server::server] after wait time Thu Apr 29 21:06:46 2010
+Ready sockets 1
+[Socket::Socket] socket 0x100562470 conned = yes
+[Server::server] before wait time Thu Apr 29 21:06:46 2010
+[Server::server] after wait time Thu Apr 29 21:06:50 2010
+Ready sockets 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read -1
+[Server::process message [msg=getcurrenthour] string []
+[Socket::connected] conned? yes
+[Socket::in] read -1
+[Socket::connected] conned? yes
+[Server::server] before wait time Thu Apr 29 21:06:50 2010
+[Server::server] after wait time Thu Apr 29 21:06:55 2010
+Ready sockets 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read 1
+[Socket::in] read -1
+[Server::process message [msg=quit] string []
+Server::process failed module process msg=quit
+[Socket::disconnect] socket 0x100562470
+[Socket::disconnect] disconnecting player
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:06:55 2010
+[Server::server] after wait time Thu Apr 29 21:07:05 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:07:05 2010
+[Server::server] after wait time Thu Apr 29 21:07:15 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:07:15 2010
+[Server::server] after wait time Thu Apr 29 21:07:25 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:07:25 2010
+[Server::server] after wait time Thu Apr 29 21:07:35 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:07:35 2010
+[Server::server] after wait time Thu Apr 29 21:07:55 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:07:55 2010
+[Server::server] after wait time Thu Apr 29 21:08:05 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:08:05 2010
+[Server::server] after wait time Thu Apr 29 21:08:25 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:08:25 2010
+[Server::server] after wait time Thu Apr 29 21:08:45 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:08:45 2010
+[Server::server] after wait time Thu Apr 29 21:08:55 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:08:55 2010
+[Server::server] after wait time Thu Apr 29 21:09:15 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:09:15 2010
+[Server::server] after wait time Thu Apr 29 21:09:25 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:09:25 2010
+[Server::server] after wait time Thu Apr 29 21:09:35 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:09:35 2010
+[Server::server] after wait time Thu Apr 29 21:09:45 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:09:45 2010
+[Server::server] after wait time Thu Apr 29 21:10:05 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:10:05 2010
+[Server::server] after wait time Thu Apr 29 21:10:15 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:10:15 2010
+[Server::server] after wait time Thu Apr 29 21:10:25 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:10:25 2010
+[Server::server] after wait time Thu Apr 29 21:10:35 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:10:35 2010
+[Server::server] after wait time Thu Apr 29 21:10:45 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:10:45 2010
+[Server::server] after wait time Thu Apr 29 21:10:55 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:10:55 2010
+[Server::server] after wait time Thu Apr 29 21:11:05 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:11:05 2010
+[Server::server] after wait time Thu Apr 29 21:11:15 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:11:15 2010
+[Server::server] after wait time Thu Apr 29 21:11:35 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:11:35 2010
+[Server::server] after wait time Thu Apr 29 21:11:45 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:11:45 2010
+[Server::server] after wait time Thu Apr 29 21:11:55 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:11:55 2010
+[Server::server] after wait time Thu Apr 29 21:12:15 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:12:15 2010
+[Server::server] after wait time Thu Apr 29 21:12:35 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:12:35 2010
+[Server::server] after wait time Thu Apr 29 21:12:45 2010
+Broadcasting pong
+[Socket::connected] conned? yes
+[Server::serve] flushed 0 connections
+[Server::server] before wait time Thu Apr 29 21:12:45 2010

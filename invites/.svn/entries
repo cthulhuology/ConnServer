@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="491"
+   name=""
+   committed-date="2006-02-10T21:43:08.557508Z"
+   url="http://www.ihomegame.com/svn/poker/CS/invites"
+   last-author="dave"
+   kind="dir"
+   uuid="16f80d35-b5d1-0310-8cb1-8edff6e223b1"
+   revision="543"/>
+<entry
+   committed-rev="491"
+   name="password.txt"
+   text-time="2006-02-10T22:26:31.000000Z"
+   committed-date="2006-02-10T21:43:08.557508Z"
+   checksum="3620a99576fb9a6c9d70cbc003c6ba31"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-02-10T22:26:31.000000Z"/>
+<entry
+   committed-rev="431"
+   name="replay.txt"
+   text-time="2005-12-13T05:11:52.000000Z"
+   committed-date="2005-12-15T18:28:33.565488Z"
+   checksum="8e05712dd6806016232ef51ee1cd2a59"
+   last-author="dave"
+   kind="file"
+   prop-time="2005-12-09T03:46:57.000000Z"/>
+<entry
+   committed-rev="423"
+   name="league_invite.txt"
+   text-time="2005-12-09T03:46:57.000000Z"
+   committed-date="2005-12-09T01:52:07.927189Z"
+   checksum="dd98b27199336ba94155f473aec35d49"
+   last-author="dave"
+   kind="file"
+   prop-time="2005-12-09T03:46:57.000000Z"/>
+</wc-entries>

@@ -1,0 +1,20 @@
+From: The Commish <commish@ihomegame.com>
+To: $NAME $EMAIL
+Subject: An Invitation from $SENDER
+
+$NAME
+
+You have been invited by $SENDER to join the $LEAGUE league at iHomeGame.com.
+
+$SENDER says:
+
+$MESSAGE
+
+To join simply click or enter the following URL to join:
+
+	http://www.ihomegame.com/iHomeGame.com/dave/iHomeGame_main.swf?invite=$INVITE
+
+Sincerely,
+
+The Commish
+

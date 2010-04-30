@@ -1,0 +1,11 @@
+export CSPATH=/Users/$LOGNAME/CS
+export CSBIN=$CSPATH/ConnServer
+export CSDBCONN="dbname=devel user=dave"
+export CSROOT="/Users/dave/CS/invites"
+export CSID=1
+export CSCACHEID=281474976710656
+export CSPID=$CSPATH/ConnServer.pid
+export CSLOG=$CSPATH/ConnServer.log
+export CSMODULEHOME=$CSPATH/modules
+export CSPYMODULEHOME=$CSPATH/modules/python
+export LD_LIBRARY_PATH=$CSPATH

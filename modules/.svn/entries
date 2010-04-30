@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wc-entries
+   xmlns="svn:">
+<entry
+   committed-rev="542"
+   name=""
+   committed-date="2006-04-04T20:56:58.492529Z"
+   url="http://www.ihomegame.com/svn/poker/CS/modules"
+   last-author="manoj"
+   kind="dir"
+   uuid="16f80d35-b5d1-0310-8cb1-8edff6e223b1"
+   revision="543"/>
+<entry
+   name="python"
+   kind="dir"/>
+<entry
+   committed-rev="317"
+   name="module_version"
+   text-time="2005-11-01T03:53:57.000000Z"
+   committed-date="2005-11-02T06:32:42.016671Z"
+   checksum="3be873cedd792b389c2b2495aa2b9b31"
+   last-author="dave"
+   kind="file"/>
+<entry
+   committed-rev="452"
+   name="chat_modules.cc"
+   text-time="2006-01-11T02:19:57.000000Z"
+   committed-date="2006-01-11T02:19:32.207683Z"
+   checksum="4a3102a620fb5809ded0d37ea5b17730"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-01-11T02:19:57.000000Z"/>
+<entry
+   committed-rev="389"
+   name="cashier_modules.h"
+   text-time="2005-11-17T21:50:15.000000Z"
+   committed-date="2005-11-17T21:50:05.529223Z"
+   checksum="46a6a3bfafac49dc4ba9bb219c8420bc"
+   last-author="dave"
+   kind="file"
+   prop-time="2005-11-17T21:50:15.000000Z"/>
+<entry
+   committed-rev="187"
+   name="chat_modules.h"
+   text-time="2005-09-21T04:16:00.000000Z"
+   committed-date="2005-09-21T04:46:33.456269Z"
+   checksum="167dac2c942ebf1bfae9eecf232d14bb"
+   last-author="dave"
+   kind="file"
+   prop-time="2004-09-19T11:54:09.000000Z"/>
+<entry
+   committed-rev="535"
+   name="event_modules.cc"
+   text-time="2006-03-29T16:08:39.000000Z"
+   committed-date="2006-03-29T18:11:58.111245Z"
+   checksum="4a8a8ab6b29b1a169a4afddfc791103c"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-03-09T19:33:04.000000Z"/>
+<entry
+   committed-rev="511"
+   name="poker_modules.h"
+   text-time="2006-03-03T19:47:32.000000Z"
+   committed-date="2006-02-27T20:22:56.024208Z"
+   checksum="dba7d5ac230d4e7816f603e516e49b53"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-03-03T19:47:32.000000Z"/>
+<entry
+   committed-rev="430"
+   name="event_modules.h"
+   text-time="2005-12-11T05:54:48.000000Z"
+   committed-date="2005-12-12T02:25:57.520036Z"
+   checksum="f78e0df9d50e1c893495ceb141291d8d"
+   last-author="dave"
+   kind="file"
+   prop-time="2005-12-09T00:03:28.000000Z"/>
+<entry
+   committed-rev="475"
+   name="mail_modules.h"
+   text-time="2006-02-01T20:27:19.000000Z"
+   committed-date="2006-02-01T20:26:53.402257Z"
+   checksum="274ce2a97b690d42d9a0086779c72971"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-02-01T20:27:19.000000Z"/>
+<entry
+   committed-rev="191"
+   name="bot_modules.h"
+   text-time="2005-09-21T23:09:03.000000Z"
+   committed-date="2005-09-24T06:41:15.492891Z"
+   checksum="a2382697137be1655c248434c86d18b8"
+   last-author="dave"
+   kind="file"
+   prop-time="2004-09-19T11:54:09.000000Z"/>
+<entry
+   committed-rev="536"
+   name="table_modules.cc"
+   text-time="2006-03-31T17:49:05.000000Z"
+   committed-date="2006-03-31T17:45:52.027010Z"
+   checksum="cdf8d89f299315e16b2810f8a74b082d"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-03-31T17:49:05.000000Z"/>
+<entry
+   committed-rev="431"
+   name="board_modules.cc"
+   text-time="2005-12-13T04:18:23.000000Z"
+   committed-date="2005-12-15T18:28:33.565488Z"
+   checksum="36318afb2e95fa898881736f0e22a2cb"
+   last-author="dave"
+   kind="file"
+   prop-time="2005-12-01T23:15:27.000000Z"/>
+<entry
+   committed-rev="453"
+   name="table_modules.h"
+   text-time="2006-01-11T02:54:17.000000Z"
+   committed-date="2006-01-11T02:51:27.968863Z"
+   checksum="8562b0ca7c8a658b70c293b5b9069291"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-01-11T02:54:17.000000Z"/>
+<entry
+   committed-rev="404"
+   name="board_modules.h"
+   text-time="2005-11-28T22:19:04.000000Z"
+   committed-date="2005-11-28T22:09:48.849450Z"
+   checksum="3185caae20f1035d431972c7ce094d5c"
+   last-author="dave"
+   kind="file"
+   prop-time="2005-11-28T22:19:04.000000Z"/>
+<entry
+   committed-rev="460"
+   name="friends_modules.cc"
+   text-time="2006-01-17T22:58:29.000000Z"
+   committed-date="2006-01-18T00:20:32.680107Z"
+   checksum="670a046cf334331a6c4b7a5d59c51081"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-01-11T02:19:57.000000Z"/>
+<entry
+   committed-rev="456"
+   name="season_modules.h"
+   text-time="2006-01-11T23:47:08.000000Z"
+   committed-date="2006-01-11T23:41:57.056276Z"
+   checksum="6b1ebc5afa4629d8594b48e81b4f21b2"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-01-11T23:47:08.000000Z"/>
+<entry
+   committed-rev="542"
+   name="build.sh"
+   text-time="2006-04-06T14:27:34.000000Z"
+   committed-date="2006-04-04T20:56:58.492529Z"
+   checksum="8dd48f82d579a771a19578e6618981ad"
+   last-author="manoj"
+   kind="file"
+   prop-time="2006-04-06T14:27:34.000000Z"/>
+<entry
+   committed-rev="127"
+   name="test_module.cc"
+   text-time="2004-09-19T11:54:10.000000Z"
+   committed-date="2004-09-19T09:02:41.149585Z"
+   checksum="7965681e0e0be3783dddbcf459465ddc"
+   last-author="dave"
+   kind="file"
+   prop-time="2004-09-19T11:54:09.000000Z"/>
+<entry
+   committed-rev="504"
+   name="tournament_modules.cc"
+   text-time="2006-02-23T01:12:39.000000Z"
+   committed-date="2006-02-23T03:03:46.270631Z"
+   checksum="a429e5d19d4a25d98db9f55b9bad4137"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-02-20T23:45:27.000000Z"/>
+<entry
+   committed-rev="509"
+   name="player_modules.cc"
+   text-time="2006-02-25T19:58:17.000000Z"
+   committed-date="2006-02-24T21:58:12.927480Z"
+   checksum="bb6948c0edb68dd455a4633246d14e60"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-02-25T19:58:17.000000Z"/>
+<entry
+   committed-rev="378"
+   name="Makefile.LINUX"
+   text-time="2005-11-15T00:45:53.000000Z"
+   committed-date="2005-11-15T00:42:49.291880Z"
+   checksum="b9fd4d34828ce8b0da412ccbdbab3e92"
+   last-author="dave"
+   kind="file"
+   prop-time="2005-11-15T00:44:45.000000Z"/>
+<entry
+   committed-rev="488"
+   name="stats_modules.h"
+   text-time="2006-02-07T22:48:55.000000Z"
+   committed-date="2006-02-07T23:08:40.940856Z"
+   checksum="aad08dc438a8c4fdefc0ccdf3af44d64"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-02-07T21:17:51.000000Z"/>
+<entry
+   committed-rev="296"
+   name="admin.cc"
+   text-time="2005-10-25T04:25:11.000000Z"
+   committed-date="2005-10-25T04:43:17.816859Z"
+   checksum="aa6b7c8c1554a5b51377966e84257973"
+   last-author="dave"
+   kind="file"
+   prop-time="2005-10-22T03:24:57.000000Z"/>
+<entry
+   committed-rev="306"
+   name="pymod.cc"
+   text-time="2005-10-29T00:12:49.000000Z"
+   committed-date="2005-10-29T00:23:17.985379Z"
+   checksum="a7a4bd24c0f0075dca97adf66f970768"
+   last-author="dave"
+   kind="file"
+   prop-time="2004-09-19T11:54:09.000000Z"/>
+<entry
+   committed-rev="370"
+   name="Makefile"
+   text-time="2005-11-11T23:56:55.000000Z"
+   committed-date="2005-11-11T23:56:00.155198Z"
+   checksum="2e5619a0319f8cea2473bf7c6325d075"
+   last-author="dave"
+   kind="file"
+   prop-time="2005-11-11T23:56:55.000000Z"/>
+<entry
+   committed-rev="460"
+   name="league_modules.h"
+   text-time="2006-01-17T23:25:04.000000Z"
+   committed-date="2006-01-18T00:20:32.680107Z"
+   checksum="2c8a713f2656371bfddfc08c4352988b"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-01-11T02:19:57.000000Z"/>
+<entry
+   committed-rev="524"
+   name="cashier_modules.cc"
+   text-time="2006-03-09T04:41:59.000000Z"
+   committed-date="2006-03-09T04:41:46.251048Z"
+   checksum="4b9ffc762c89345f12c10de4757fa783"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-03-09T04:41:59.000000Z"/>
+<entry
+   committed-rev="511"
+   name="poker_modules.cc"
+   text-time="2006-03-03T19:47:32.000000Z"
+   committed-date="2006-02-27T20:22:56.024208Z"
+   checksum="ae7cad3ea2ce0b91ff4bf08d37204e38"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-03-03T19:47:32.000000Z"/>
+<entry
+   committed-rev="475"
+   name="mail_modules.cc"
+   text-time="2006-02-01T20:27:19.000000Z"
+   committed-date="2006-02-01T20:26:53.402257Z"
+   checksum="9d293183ab5d71f284292c3283afa834"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-02-01T20:27:19.000000Z"/>
+<entry
+   committed-rev="513"
+   name="bot_modules.cc"
+   text-time="2006-03-03T19:47:32.000000Z"
+   committed-date="2006-02-28T21:18:44.756690Z"
+   checksum="0ae0523485388a314197d5e882fcf13d"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-03-03T19:47:32.000000Z"/>
+<entry
+   committed-rev="490"
+   name="season_modules.cc"
+   text-time="2006-02-08T01:53:29.000000Z"
+   committed-date="2006-02-08T01:57:26.898675Z"
+   checksum="32f8cad00182fda7a54e8b8b29cc2b89"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-01-24T20:48:43.000000Z"/>
+<entry
+   committed-rev="388"
+   name="pingpong.cc"
+   text-time="2005-11-17T21:10:31.000000Z"
+   committed-date="2005-11-17T21:49:10.510809Z"
+   checksum="e68406c8b7475e28d251e652aefaef9d"
+   last-author="dave"
+   kind="file"
+   prop-time="2004-09-19T11:54:09.000000Z"/>
+<entry
+   committed-rev="378"
+   name="Makefile.MACOSX"
+   text-time="2005-11-15T00:44:45.000000Z"
+   committed-date="2005-11-15T00:42:49.291880Z"
+   checksum="59673b876fbac4e0b2e3c8fa4e82b4aa"
+   last-author="dave"
+   kind="file"
+   prop-time="2005-11-15T00:44:45.000000Z"/>
+<entry
+   committed-rev="388"
+   name="pingpong.h"
+   text-time="2005-11-17T21:10:43.000000Z"
+   committed-date="2005-11-17T21:49:10.510809Z"
+   checksum="b0e28335d9749fa119c6c5e7f294e01d"
+   last-author="dave"
+   kind="file"
+   prop-time="2004-09-19T11:54:09.000000Z"/>
+<entry
+   committed-rev="400"
+   name="friends_modules.h"
+   text-time="2005-11-23T05:32:11.000000Z"
+   committed-date="2005-11-23T00:38:17.155779Z"
+   checksum="19f9dd76b8f7863497c4b91649c0b73a"
+   last-author="dave"
+   kind="file"
+   prop-time="2005-11-23T05:32:11.000000Z"/>
+<entry
+   committed-rev="513"
+   name="watcher_modules.cc"
+   text-time="2006-03-03T19:47:32.000000Z"
+   committed-date="2006-02-28T21:18:44.756690Z"
+   checksum="e9ccf0f31596d796846da39dd6bc9b79"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-03-03T19:47:32.000000Z"/>
+<entry
+   committed-rev="475"
+   name="tournament_modules.h"
+   text-time="2006-02-01T20:27:19.000000Z"
+   committed-date="2006-02-01T20:26:53.402257Z"
+   checksum="ded2911e492924ce24f1c6f78316262f"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-02-01T20:27:19.000000Z"/>
+<entry
+   committed-rev="292"
+   name="player_modules.h"
+   text-time="2005-10-22T03:24:57.000000Z"
+   committed-date="2005-10-21T06:55:56.020047Z"
+   checksum="781086200a74328d360b79a31243f06d"
+   last-author="dave"
+   kind="file"
+   prop-time="2005-10-22T03:24:57.000000Z"/>
+<entry
+   committed-rev="127"
+   name="test_module.h"
+   text-time="2004-09-19T11:54:10.000000Z"
+   committed-date="2004-09-19T09:02:41.149585Z"
+   checksum="1f899832dbd31e8033c1b1ee6bcbc228"
+   last-author="dave"
+   kind="file"
+   prop-time="2004-09-19T11:54:09.000000Z"/>
+<entry
+   committed-rev="534"
+   name="stats_modules.cc"
+   text-time="2006-03-21T15:05:20.000000Z"
+   committed-date="2006-03-21T15:21:49.185233Z"
+   checksum="167876ffc0240877933146aa091465de"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-03-16T20:19:00.000000Z"/>
+<entry
+   committed-rev="458"
+   name="watcher_modules.h"
+   text-time="2006-01-12T20:53:18.000000Z"
+   committed-date="2006-01-12T20:51:23.485531Z"
+   checksum="32c4b83b08e14c1be6a0334f718fb464"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-01-12T20:53:18.000000Z"/>
+<entry
+   committed-rev="296"
+   name="acl_modules.cc"
+   text-time="2005-10-25T04:23:21.000000Z"
+   committed-date="2005-10-25T04:43:17.816859Z"
+   checksum="71bca84092361132f6ce5ee14e3cd36c"
+   last-author="dave"
+   kind="file"
+   prop-time="2005-10-18T23:26:31.000000Z"/>
+<entry
+   committed-rev="296"
+   name="acl_modules.h"
+   text-time="2005-10-25T04:22:00.000000Z"
+   committed-date="2005-10-25T04:43:17.816859Z"
+   checksum="6fa5cd86b58e8fc43723e955862ee746"
+   last-author="dave"
+   kind="file"/>
+<entry
+   committed-rev="509"
+   name="league_modules.cc"
+   text-time="2006-02-25T19:58:17.000000Z"
+   committed-date="2006-02-24T21:58:12.927480Z"
+   checksum="b89a122577d8787dc4286ab491d4d1a7"
+   last-author="dave"
+   kind="file"
+   prop-time="2006-02-25T19:58:17.000000Z"/>
+<entry
+   committed-rev="292"
+   name="admin.h"
+   text-time="2005-10-22T03:24:57.000000Z"
+   committed-date="2005-10-21T06:55:56.020047Z"
+   checksum="6c60cbf8624045cc2db7b667da7cc694"
+   last-author="dave"
+   kind="file"
+   prop-time="2005-10-22T03:24:57.000000Z"/>
+<entry
+   committed-rev="191"
+   name="pymod.h"
+   text-time="2005-09-22T22:31:59.000000Z"
+   committed-date="2005-09-24T06:41:15.492891Z"
+   checksum="a99e78830f9a8f300b29bd5935216633"
+   last-author="dave"
+   kind="file"
+   prop-time="2004-09-19T11:54:09.000000Z"/>
+</wc-entries>
