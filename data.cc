@@ -142,11 +142,11 @@ Indexable::parse(const string& s)
 ALLOC_METHODS(Administrators)
 
 INIT_METHOD(Administrators)
-	members = decode<Member>(o["members"]);
+	players = decode<Player>(o["players"]);
 END
 
 TOS_METHOD(Administrators)
-	return "type:" + type() + ",members=" + encode<Member>(members);	
+	return "type:" + type() + ",players=" + encode<Player>(players);	
 END
 
 // Details Class
@@ -244,7 +244,6 @@ Login::alloc(Database* d)
 }
 
 INIT_METHOD(Login)
-	uid = o["uid"];
 	player = Cache::find<Player>(o["player"]);
 	server = Cache::find<CS>(o["server"]);
 	sock = NULL;
@@ -253,7 +252,6 @@ END
 
 TOS_METHOD(Login)
 	return "type:" + type() 
-		+ ",uid:" + uid 
 		+ ",player:" + (player == NULL ? "" : string_of_Uint64(player->id))
 		+ ",server:" + (server == NULL ? "" : string_of_Uint64(server->id));
 END
@@ -307,6 +305,10 @@ TOS_METHOD(Post)
 		+ ",last:" + string_of_int(last)
 		+ ",body:" + body;
 END
+
+string Post::display() {
+	return "{ " + body + " }";
+}
 
 // CS Class
 

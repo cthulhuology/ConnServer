@@ -339,7 +339,6 @@ go_again:
 		Message m;
 		m.add("msg","start-event");
 		m.add("event",string_of_Uint64(et.event->id));
-		m.add("tournament",(et.event->tournament == NULL ? "" : string_of_Uint64(et.event->tournament->id)));
 		m.add("time",string_of_int(et.time));
 		cerr << "[Server::startEvents] PROCESSING " << m.dump() << endl;
 		mod->process(instance->watcher,m);
@@ -486,33 +485,6 @@ Socket* Server::set_watcher(Socket* c)
 Socket* Server::get_watcher()
 {
 	return instance->watcher;
-}
-
-list<Table*> Server::get_tables()
-{
-	list<Table*> retval;
-	map<string,Room*>::iterator i;
-	for (i = instance->rooms.begin(); i != instance->rooms.end(); ++i) {
-		if ((i->second) == NULL) continue;
-		Table* t = (i->second)->table();
-		if (t == NULL) continue;
-		retval.push_back(t);
-	}
-	return retval;
-}
-
-bool Server::myEvents(Player* p, Message& m)
-{
-	list<League*>::iterator l;
-	list<EventTimer>::iterator i;
-	for (i = instance->events.begin(); i != instance->events.end(); ++i) {
-		if (i->event == NULL) continue;
-		for (l = p->leagues.begin(); l != p->leagues.end(); ++l) {
-			if (*l != i->event->season->league) continue;	
-			m.add(string_of_Uint64(i->event->id), i->event->name + "!" + string_of_int(i->time) + "!" + i->event->game + "!" + (*l)->name  + "!" + (i->event->playoff ? "1" : "0") + "!" + i->event->notes);
-		}
-	}
-	return true;
 }
 
 bool Server::send_watcher(Message& m)

@@ -3,7 +3,7 @@
 // Copyright (C) 2004, 2005 David J. Goehrig
 // All rights reserved
 //
-// Mapping users to clients and sockets and uids so that we can track them
+// Mapping users to clients and sockets and player ids so that we can track them
 //
 
 #include "user_map.h"
@@ -95,7 +95,7 @@ UserMap::find(const string& u)
 	}
 	list<Login*>::iterator i;
 	for (i = usermap->logins.begin(); i != usermap->logins.end(); ++i) {
-		if ((*i)->uid == u) {
+		if (string_of_Uint64((*i)->player->id) == u) {
 			return i;
 		}
 	}
@@ -120,9 +120,9 @@ UserMap::users()
 	list<Login*>::iterator i;
 	for (i = usermap->logins.begin(); i != usermap->logins.end(); ++i) {
 		if (retval.empty()) {
-			retval = (*i)->uid;
+			retval = (*i)->player->id;
 		} else {
-			retval += "!" + (*i)->uid;
+			retval += "!" + (*i)->player->id;
 		}
 	}
 	return retval;

@@ -39,12 +39,9 @@ class Room {
 		void disconnect_members();
 		void members(Message& m);
 		void bot_members(Message& m);
-		void set_table(Table* t);
 		void addAvatars(Message& m);
-		Table* table();
 		string name;
 	private:
-		Table* tab;
 		Socket* bot;
 		list<Socket*> mem;
 };

@@ -27,7 +27,7 @@ END_REGISTRY
 
 MODULE_PROCESS(LoginModule)
 {
-	list<string> ur = split('@',m["uid"]);
+	list<string> ur = split('@',m["player"]);
 	if ( ur.size() != 2) {
 		m.add("status","1");
 		return c->send(m);
@@ -66,19 +66,16 @@ MODULE_PROCESS(LoginModule)
 		return c->send(m);
 	}
 	Login* login = Login::alloc(d);
-	login->uid = m["uid"];
 	login->player = Cache::find<Player>((*res)["player_id"][0]);
 	login->server = Server::cs();
 	login->sock = c;
-	login->replay = NULL;
-	login->frame = 0;
 	c->set_login(login);
 	UserMap::add(login);
 	if ( rm != "lobby" ) {
 		Room* room = Server::room(rm);
 		if (room != NULL) {
 			room->add(c);
-			room->announce("announce",m["uid"],login->player->avatar,"0");
+			room->announce("announce",m["player"],login->player->avatar,"0");
 		} else {
 			m.add("status","3");
 		}
@@ -94,7 +91,7 @@ MODULE_PROCESS(LoginModule)
 				if ((*i)->player == NULL) continue;
 				Login* log = UserMap::getLogin((*i)->player->username + "@lobby");	
 				if  (log == NULL) continue;
-				cerr << "Sending notify message " << msg.dump() << " to " << log->uid << endl;
+				cerr << "Sending notify message " << msg.dump() << " to " << log->player->id << endl;
 				log->sock->send(msg);
 				}
 			}
@@ -181,7 +178,7 @@ MODULE_PROCESS(RegisterModule)
 		m.add("status","1");
 	} else {
 		m.add("status","0");
-		m.add("uid", un + "@lobby");
+		m.add("player", un + "@lobby");
 		d->commit();	
 	}
 	delete res;
@@ -276,13 +273,8 @@ MODULE_PROCESS(DisconnectModule)
 {
 	Login* login = c->login();
 	if (login != NULL) {
-		if (login->seat >= 0 && login->seat < Table::MAX_SEATS) {
-			Message leavetable;
-			leavetable.add("msg","leavetable");
-			Module::call("leavetable",c,leavetable);
-		}
 		if (c->room() != Server::room("lobby")) {
-			c->room()->announce("disconnecting",login->uid,"","0");
+			c->room()->announce("disconnecting",string_of_Uint64(login->player->id),"","0");
 		} else {
 			Message msg;
 			msg.add("msg","notify");
@@ -295,7 +287,7 @@ MODULE_PROCESS(DisconnectModule)
 					if ((*i)->player == NULL) continue;
 					Login* log = UserMap::getLogin((*i)->player->username + "@lobby");	
 					if  (log == NULL) continue;
-					cerr << "Sending notify message " << msg.dump() << " to " << log->uid << endl;
+					cerr << "Sending notify message " << msg.dump() << " to " << log->player->id << endl;
 					log->sock->send(msg);
 				}
 			}

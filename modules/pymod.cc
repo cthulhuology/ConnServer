@@ -392,7 +392,7 @@ PyObject*
 cs_SocketObject_uid(cs_SocketObject* self)
 {
 	PyObject* pyuid;
-	pyuid = PyString_FromString(self->client->login()->uid.c_str());
+	pyuid = PyString_FromString(string_of_Uint64(self->client->login()->player->id).c_str());
 	return pyuid;
 }
 

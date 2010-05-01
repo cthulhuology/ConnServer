@@ -27,7 +27,7 @@ MODULE_PROCESS(AddFriendModule)
 
 	if (c->isBot()) { return true; }
 	Player* p = c->login()->player;
-	Login* l = UserMap::getLogin(m["uid"]);
+	Login* l = UserMap::getLogin(m["player"]);
 
 	if (l == NULL || p == NULL) {
 		m.add("status","1");
@@ -56,8 +56,8 @@ MODULE_PROCESS(AddFriendModule)
 	msg.add("msg","request-friend");
 	msg.add("text",m["text"]);
 	msg.add("avatar",c->login()->player->avatar);
-	msg.add("uid",c->login()->uid);
-	msg.add("fid",string_of_Uint64(f->id));
+	msg.add("player",string_of_Uint64(c->login()->player->id));
+	msg.add("friend",string_of_Uint64(f->id));
 	l->sock->send(msg);
 	m.add("status","3");
 	return c->send(m);
@@ -65,13 +65,13 @@ MODULE_PROCESS(AddFriendModule)
 
 MODULE_PROCESS(AcceptFriendModule)
 {
-	MSG_CHECK( "uid,accept,fid,category,rating,personality" )
+	MSG_CHECK( "uid,accept,friend,category,rating,personality" )
 	LOGIN_CHECK
 
 	if (c->isBot()) { return true; }
 	Player* p = c->login()->player;
-	Login* l = UserMap::getLogin(m["uid"]);
-	Friend* of = Cache::find<Friend>(m["fid"]);
+	Login* l = UserMap::getLogin(m["player"]);
+	Friend* of = Cache::find<Friend>(m["friend"]);
 
 	if (l == NULL || p == NULL || of == NULL) {
 		m.add("status","1");
@@ -80,7 +80,7 @@ MODULE_PROCESS(AcceptFriendModule)
 	
 	Message msg;
 	msg.add("msg","add-friend");
-	msg.add("uid",c->login()->uid);
+	msg.add("player",string_of_Uint64(c->login()->player->id));
 	if ( m["accept"] != "0" ) {
 		msg.add("status","2");		
 		l->sock->send(msg);

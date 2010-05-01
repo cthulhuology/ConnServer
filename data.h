@@ -17,6 +17,7 @@
 #include <iostream>
 using namespace std;
 
+#include "esocket.h"
 #include "database.h"
 #include "util.h"
 
@@ -99,7 +100,7 @@ typedef Indexable* ID;
 
 class Administrators : public Indexable {
 	public:
-		list<Member*>  members;
+		list<Player*> players;
 
 	COMMON_METHODS(Administrators)
 };
@@ -161,13 +162,9 @@ class Friend : public Indexable {
 
 class Login : public Indexable {
 	public:
-		string uid;
 		Player* player;
-		int seat;
 		CS* server;	
 		Socket* sock;	// DYNAMIC NOT SAVED
-		Replay* replay;
-		int frame;
 
 	COMMON_METHODS(Login);
 };
@@ -193,6 +190,8 @@ class Post : public Indexable {
 		int date;
 		int last;
 		string body;
+
+		string display();
 
 	COMMON_METHODS(Post)	
 };

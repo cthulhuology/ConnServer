@@ -15,7 +15,6 @@ Room::Room(const string& s) : name(s)
 {
 	cerr << "Room::Room creating room " << name << endl;
 	bot = NULL;
-	tab = NULL;
 }
 
 Room::~Room()
@@ -73,7 +72,7 @@ bool Room::announce(const string& o, const string& u, const string& a, const str
 	m.add("msg",o);
 	m.add("status",s);
 	m.add("avatar",a);
-	m.add("uid",u);
+	m.add("player",u);
 	broadcast(m);
 	send_bot(m);
 	return true;
@@ -89,28 +88,12 @@ bool Room::broadcast(Message& m)
 		if ((*c)->connected()) {
 			if (! (*c)->send(m)) {
 				Login* l = UserMap::getLogin(*c);
-				if ( l != NULL) {
-					cerr << "Room::broadcast failed for user " << l->uid << endl;
+				if (l) {
+					cerr << "Room::broadcast failed for user " << l->player->id << endl;
 				}
 				retval = false;
 			}
 		}
-	}
-	// ADDING BROADCAST MESSAGE TO THE REPLAY 
-	if (tab != NULL && tab->current != NULL && ! tab->current->done && tab->current->replay != NULL) {
-//		cerr << "[Room::braodcast] saving " << m.dump() << endl;
-		if (m["msg"] == "chat") {
-			m.remove("msg");
-			m.add("msg","replay-chat");
-		}
-		if (m["msg"] == "state") {
-			addAvatars(m);	
-		}
-		tab->current->replay->add(m);
-	} else {
-//		cerr << "Not saving replay" << endl;
-//		cerr << "tab? " << (tab == NULL ? "NULL" : "yes") << endl;
-//		cerr << "current? " << (tab == NULL ? "NULL" :( tab->current == NULL ? "NULL" : "yes")) << endl;
 	}
 	return retval;
 }
@@ -136,8 +119,8 @@ void Room::members(Message& m)
 	list<Socket*>::iterator r;
 	for (r = mem.begin();r != mem.end(); ++r) {
 		Login* l = UserMap::getLogin(*r);
-		if (l != NULL && l->player != NULL) {
-			m.add(l->uid,l->player->avatar);	
+		if (l != NULL && l->player) {
+			m.add(string_of_Uint64(l->player->id),l->player->avatar);	
 		}
 	}
 }
@@ -148,7 +131,7 @@ void Room::bot_members(Message& m)
 	for (r = mem.begin();r != mem.end(); ++r) {
 		Login* l = UserMap::getLogin(*r);
 		if (l != NULL && l->player != NULL) {
-			m.add(string_of_Uint64(l->player->id),l->uid);	
+			m.add("player",string_of_Uint64(l->player->id));	
 		}
 	}
 }
@@ -162,21 +145,11 @@ void Room::disconnect_members()
 	mem.clear();	
 }
 
-void Room::set_table(Table* t)
-{
-	tab = t;
-}
-
-Table* Room::table()
-{
-	return tab;
-}
-
 void Room::addAvatars(Message& m)
 {
 	list<Socket*>::iterator i;
 	for(i = mem.begin(); i  != mem.end(); ++i ) {
 		if (*i == NULL || (*i)->login() == NULL || (*i)->login()->player == NULL) continue;
-		m.add((*i)->login()->uid,(*i)->login()->player->avatar);
+		m.add(string_of_Uint64((*i)->login()->player->id),(*i)->login()->player->avatar);
 	}
 }

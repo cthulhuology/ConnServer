@@ -20,12 +20,12 @@ MODULE_PROCESS(AdminModule) {
 	if (login == NULL || login->player == NULL) return false;
 	CS* cs = Server::cs();
 	if (cs == NULL || cs->admins == NULL) return false;
-	list<Member*> admins = cs->admins->members;
+	list<Player*> admins = cs->admins->players;
 	if (admins.empty()) return false;
-	list<Member*>::iterator i;
+	list<Player*>::iterator i;
 	bool isAdmin = false;
 	for (i = admins.begin(); i != admins.end(); ++i) {
-		if (login->player == (*i)->player) {
+		if (login->player == *i) {
 			isAdmin = true;
 			break;
 		}	

@@ -58,14 +58,12 @@ int main (int argc, char** argv )
 		SAVE(player,Player)
 		SAVE(details,Details)
 		SAVE(admins,Administrators)
-		SAVE(invite,Invite)
 	} else {
 		cerr << "Finding id " << id << endl;
 		FIND(cs,CS);
 		FIND(player,Player)
 		FIND(details,Details)
 		FIND(admins,Administrators)
-		FIND(invite,Invite)
 	}
 	
 done:

@@ -52,8 +52,6 @@ class Server {
 	static bool pendingEvents(Message& m);
 	static Socket* get_watcher();
 	static Socket* set_watcher(Socket* c);
-	static list<Table*> get_tables(); 
-	static bool myEvents(Player* p, Message& m);
 	static bool send_watcher(Message& m);
 	Room* lobby;
 
