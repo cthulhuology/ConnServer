@@ -24,7 +24,7 @@ dbtool : libcs.dylib dbtool.cc
 
 .PHONY: clean
 clean:
-	rm -f *.o libcs.dylib ConnServer
+	rm -rf *.o libcs.dylib ConnServer *.dSYM
 	cd modules && $(MAKE) clean
 
 .PHONY: install
