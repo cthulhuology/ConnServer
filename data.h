@@ -41,7 +41,7 @@ using namespace std;
 	x* x::alloc(Database* d) { \
 		x* retval = new x; \
 		if (retval == NULL) return NULL; \
-		retval->id = Indexable::create(d); \
+		retval->id = Object::create(d,retval->type()); \
 		retval->refs = 0; \
 		Cache::add(retval,true); \
 		return retval; \
@@ -71,13 +71,13 @@ class Message;
 class Player;
 class Post;
 
-class Indexable {
+class Object {
 	friend class Cache;
 	public:
 		UInt64 id;
 		int refs;
 
-		static UInt64 create(Database* d);
+		static UInt64 create(Database* d, const string& s);
 		bool save(Database* d);
 		bool load();
 		const string type();
@@ -90,22 +90,22 @@ class Indexable {
 		virtual string tos();
 
 	protected:
-		Indexable();
-		Indexable(const Indexable&);
-		~Indexable();
-		Indexable& operator=(const Indexable&);
+		Object();
+		Object(const Object&);
+		~Object();
+		Object& operator=(const Object&);
 };
 
-typedef Indexable* ID;
+typedef Object* ID;
 
-class Administrators : public Indexable {
+class Administrators : public Object {
 	public:
 		list<Player*> players;
 
 	COMMON_METHODS(Administrators)
 };
 
-class CS : public Indexable {
+class CS : public Object {
 	public:
 		string name;
 		string ipaddr;
@@ -116,7 +116,7 @@ class CS : public Indexable {
 	COMMON_METHODS(CS);
 };
 
-class Details : public Indexable {
+class Details : public Object {
 	public:
 		string name;
 		string email;
@@ -137,7 +137,7 @@ class Details : public Indexable {
 	COMMON_METHODS(Details)
 };
 
-class Event : public Indexable {
+class Event : public Object {
 	public:
 		string name;
 		string params;
@@ -146,7 +146,7 @@ class Event : public Indexable {
 	COMMON_METHODS(Event)
 };
 
-class Friend : public Indexable {
+class Friend : public Object {
 	public:
 		Player* player;
 		string category;
@@ -160,7 +160,7 @@ class Friend : public Indexable {
 #define LOGIN_CHECK if(!c->isBot() && (c->login() == NULL || c->login()->player == NULL)) return false;
 #define BOT_CHECK if (! c->isBot()) return false;
 
-class Login : public Indexable {
+class Login : public Object {
 	public:
 		Player* player;
 		CS* server;	
@@ -169,7 +169,7 @@ class Login : public Indexable {
 	COMMON_METHODS(Login);
 };
 
-class Player : public Indexable {
+class Player : public Object {
 	public:
 		string username;
 		string password;
@@ -181,7 +181,7 @@ class Player : public Indexable {
 	COMMON_METHODS(Player)
 };
 
-class Post : public Indexable {
+class Post : public Object {
 	public:
 		Player* poster;
 		Post* parent;
@@ -196,7 +196,7 @@ class Post : public Indexable {
 	COMMON_METHODS(Post)	
 };
 
-class Cache : public Indexable {
+class Cache : public Object {
 	public:
 		static bool create(const string& s);
 		static bool fini();	
@@ -233,7 +233,7 @@ class Cache : public Indexable {
 
 template <class T>
 string
-Indexable::encode(list<T*> l)
+Object::encode(list<T*> l)
 {
 	string retval;
 	typename list<T*>::iterator i;
@@ -257,7 +257,7 @@ Indexable::encode(list<T*> l)
 
 template <class T> 
 list<T*>
-Indexable::decode(const string& s) 
+Object::decode(const string& s) 
 {
 	list<T*> retval;
 	size_t i,o;		
@@ -266,14 +266,14 @@ Indexable::decode(const string& s)
 		if (s[i] != '|') continue;
 		string ids = s.substr(o,i-o);
 		if (ids.empty()) {
-			cerr << "[Indexable::decode] loading NULL entry" << endl;
+			cerr << "[Object::decode] loading NULL entry" << endl;
 			retval.push_back(NULL);
 		} else {
 			UInt64 dbid = Uint64_of_string(s.substr(o,i-o));
-			cerr << "[Indexable::decode] loading " << dbid << endl;
+			cerr << "[Object::decode] loading " << dbid << endl;
 			T* ptr = Cache::find<T>(dbid);
 			if (ptr == NULL) {
-				cerr << "[Indexable::decode] Failed to find id " << dbid << endl;
+				cerr << "[Object::decode] Failed to find id " << dbid << endl;
 				retval.push_back(NULL);
 			} else {
 				retval.push_back(ptr);
@@ -285,7 +285,7 @@ Indexable::decode(const string& s)
 		UInt64 dbid = Uint64_of_string(s.substr(o,i-o));
 		T* ptr = Cache::find<T>(dbid);
 		if (ptr == NULL) {
-			cerr << "[Indexable::decode] Failed to find id " << dbid << endl;
+			cerr << "[Object::decode] Failed to find id " << dbid << endl;
 			retval.push_back(NULL);
 		} else {
 			retval.push_back(ptr);

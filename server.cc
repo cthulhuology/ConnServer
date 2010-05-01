@@ -430,7 +430,7 @@ bool Server::loadEvents()
 	cerr << "[Server::loadEvents] " << event_load << endl;
 
 	Result* res = d->query(event_load);
-	if (res == NULL || ! res->success() || ! d->commit()) {
+	if (! res || ! res->success() || ! d->commit()) {
 		cerr  << "[Server::loadEvents] failed " << endl;	
 		d->rollback();
 		retval = false;
@@ -465,8 +465,8 @@ bool Server::pendingEvents(Message& m)
 		++j;
 		string key = string_of_int(j);
 		string value = string_of_Uint64(i->event->id)
-			+ "!" + i->event->name
-			+ "!" + string_of_int(i->time);
+			+ "|" + i->event->name
+			+ "|" + string_of_int(i->time);
 		m.add(key,value);
 	}	
 	return j > 0;

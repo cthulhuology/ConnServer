@@ -1,14 +1,63 @@
+#!/bin/bash
+echo "
 -- schema.sql
 -- 
--- cache_table
+-- objects
 --
--- 	This table caches all of the poker data
---	We are largely database agnostic
+-- A table containing all of the objects in the system
 --
 
-drop table if exists cache_table;
-create table cache_table (
-	id bigint not NULL,
-	value text default ''
+drop table if exists objects;
+create table objects (
+	id bigint primary key,
+	type text default '',
+	value text default '',
+	created timestamp,
+	updated timestamp
 );
 
+-- a sequence for tacking ids
+drop sequence guid_seq;
+create sequence guid_seq minvalue $MIN maxvalue $MAX owned by objects.id;
+
+-- a function to create new objects
+create or replace function new_object(_type text, _value text) returns bigint as \$\$
+declare
+	_id bigint;
+begin
+	select into _id nextval('guid_seq');	
+	insert into objects (id,type,value,created,updated) values (_id,_type,_value, timestamp 'now', timestamp 'now');
+	return _id;
+end;
+\$\$ language plpgsql;
+
+-- a function to load an object by id
+create or replace function load_object(_id bigint) returns text as \$\$
+declare
+	_value text;
+begin
+	select into _value value from objects where id = _id;
+	if not found then raise exception 'object % not found', _id; end if;
+	return _value;	
+end;
+\$\$ language plpgsql;
+
+-- a function to update an object by id 
+create or replace function save_object(_id bigint, _value text) returns boolean as \$\$
+declare
+	_check bigint;
+begin
+	select into _check id from objects where id = _id;
+	if not found then return false; end if;
+	update objects set value = _value, updated = timestamp 'now'  where id = _id;
+	return true;
+end;
+\$\$ language plpgsql;
+
+-- a function to get all objects of a type
+create or replace function find_objects(_type text) returns setof bigint as \$\$
+begin
+	return query select id from objects where type = _type;
+end;
+\$\$ language plpgsql;
+"

@@ -13,27 +13,26 @@
 #include "user_map.h"
 #include "esocket.h"
 
-// Indexable Class
+// Object Class
 
-Indexable::Indexable() { }
-Indexable::~Indexable() { }
+Object::Object() { }
+Object::~Object() { }
 
-bool Indexable::init(const string& s) { 
-	cerr << "[Indexable::init] " << s << endl;
+bool Object::init(const string& s) { 
+	cerr << "[Object::init] " << s << endl;
 	return true; 
 }
-string Indexable::tos() { return string(""); }
+string Object::tos() { return string(""); }
 
-UInt64 
-Indexable::create(Database* d)
-{
-	UInt64 retval = Cache::next();
-	string query = "INSERT INTO cache_table (id) VALUES (" + string_of_Uint64(retval) + ")";
-	cerr << "[Indexable::create] " << query << endl;
+UInt64 Object::create(Database* d, const string& t) {
+	UInt64 retval = 0LL;
+	string query = "SELECT * FROM new_object('" + t + "','')";
+	cerr << "[Object::create] " << query << endl;
 	Result* res = d->query(query);
-	if (res == NULL || ! res->success()) {
-		cerr << "[Indexable::create] Failed to allocate storage: " << d->error() << endl;
-		retval = 0LL;
+	if (res == NULL || ! res->success() || res->rows != 1) {
+		cerr << "[Object::create] Failed to allocate storage: " << d->error() << endl;
+	} else { 
+		retval = Uint64_of_string((*res)["new_object"][0]);
 	}
 	delete res;
 	return retval;	
@@ -63,14 +62,14 @@ escape_tick(const string& s)
 }
 
 bool 
-Indexable::save(Database* d)
+Object::save(Database* d)
 {
 	bool retval = true;
-	string query = "UPDATE cache_table SET value = '" + escape_tick(tos()) + "' WHERE id = " + string_of_Uint64(id);
-	cerr << "[Indexable::save] " << query << endl;
+	string query = "SELECT * FROM save_object(" + string_of_Uint64(id) + ",'" + escape_tick(tos()) + "')";
+	cerr << "[Object::save] " << query << endl;
 	Result* res = d->query(query);	
 	if (res == NULL || ! res->success()) {
-		cerr << "[Indexable::save] Failed to save object " << id << " because: " << d->error() << endl;
+		cerr << "[Object::save] Failed to save object " << id << " because: " << d->error() << endl;
 		retval = false;
 	}
 	delete res;
@@ -78,45 +77,45 @@ Indexable::save(Database* d)
 }
 
 bool 
-Indexable::load()
+Object::load()
 {
 	bool retval = true;
-	string query = "SELECT id, value FROM cache_table WHERE id = " + string_of_Uint64(id);
-	cerr << "[Indexable::load] " << query << endl;
+	string query = "SELECT * FROM load_object(" + string_of_Uint64(id) + ")";
+	cerr << "[Object::load] " << query << endl;
 	Database* d = DBPool::grab();
-	cerr << "[Indexable::load] Database is " << d << endl;
+	cerr << "[Object::load] Database is " << d << endl;
 	d->begin();
 	Result* res = d->query(query);
-	cerr << "[Indexable::load] Result is " << res << endl;
+	cerr << "[Object::load] Result is " << res << endl;
 	d->commit();
 	DBPool::release(d);
-	cerr << "[Indexable::load] Result is " << (res->success() ? "Success!" : "Failure!") << endl;
+	cerr << "[Object::load] Result is " << (res->success() ? "Success!" : "Failure!") << endl;
 	if (res == NULL || ! res->success()) {
-		cerr << "[Indexable::load] Failed to load object " << id << " because: " << d->error() << endl;
+		cerr << "[Object::load] Failed to load object " << id << " because: " << d->error() << endl;
 		retval = false;
 	} else if ( res->rows == 0 ) {
-		cerr << "[Indexable::load] Object " << id << " not found" << endl;
+		cerr << "[Object::load] Object " << id << " not found" << endl;
 		retval = false;
 	} else if ( res->rows > 1) {
-		cerr << "[Indexable::load] Waring multiple objects " << id << " database corrupted" << endl;
+		cerr << "[Object::load] Waring multiple objects " << id << " database corrupted" << endl;
 		retval = false;
 	} else {
-		cerr << "[Indexable::load] Init with value: " << (*res)["value"][0]  << endl;
-		retval = init((*res)["value"][0]);
+		cerr << "[Object::load] Init with value: " << (*res)["load_object"][0]  << endl;
+		retval = init((*res)["load_object"][0]);
 	}
 	delete res;
-	cerr << "[Indexable::load] released" << endl;
+	cerr << "[Object::load] released" << endl;
 	return retval;
 }
 
 const string
-Indexable::type()
+Object::type()
 {
 	return string(typeid(*this).name());
 }
 
 map<string,string>
-Indexable::parse(const string& s)
+Object::parse(const string& s)
 {
 	map<string,string> retval;
 	list<string> kv_pairs = split(',',s);
@@ -345,7 +344,7 @@ Cache::create(const string& s)
 
 	cache = new Cache();
 	
-	string load_cache = "SELECT value FROM cache_table WHERE id = " + s;
+	string load_cache = "SELECT value FROM objects WHERE id = " + s;
 	Database* d = DBPool::grab();
 	d->begin();
 	Result* res = d->query(load_cache);
@@ -354,7 +353,7 @@ Cache::create(const string& s)
 		cerr << "[Cache::init] failed " << d->error() << endl;
 		cache->next_guid = Uint64_of_string(s);
 		cache->idspace = Uint64_of_string(s);
-		cache->id = Indexable::create(d);
+		cache->id = Object::create(d,cache->type());
 		cache->save(d);
 		d->commit();
 		delete res;

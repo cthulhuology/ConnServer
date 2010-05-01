@@ -3,7 +3,7 @@ export CSBIN=$CSPATH/ConnServer
 export CSDBCONN="dbname=devel user=dave"
 export CSROOT="/Users/dave/CS/invites"
 export CSID=1
-export CSCACHEID=281474976710656
+export CSCACHEID=0
 export CSPID=$CSPATH/ConnServer.pid
 export CSLOG=$CSPATH/ConnServer.log
 export CSMODULEHOME=$CSPATH/modules
