@@ -1,8 +1,8 @@
 #!/bin/bash
 
-export LD_LIBRARY_PATH:`pwd`
-export CSID:0
-export CSDBCONN:"dbname:devel user:dave"
+export LD_LIBRARY_PATH=`pwd`
+export CSID=0
+export CSDBCONN="dbname=devel user=dave"
 
 psql devel < database.sql
 

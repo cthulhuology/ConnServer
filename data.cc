@@ -119,17 +119,17 @@ map<string,string>
 Indexable::parse(const string& s)
 {
 	map<string,string> retval;
-	list<string> kv_pairs = split('&',s);
+	list<string> kv_pairs = split(',',s);
 	list<string>::iterator i;
 	for (i = kv_pairs.begin(); i != kv_pairs.end(); ++i) {
-	//	cerr << "--- " << *i << endl;
-		list<string> kv = split('=',*i);
+		cerr << "--- " << *i << endl;
+		list<string> kv = split(':',*i);
 		if (kv.size() >= 2 ) {
 			string first = kv.front();
 			kv.pop_front();
 			string second = kv.front();
 			retval[first] = second;
-	//		cerr << "KEY=VALUE: " << first << "=" << second << endl;
+			cerr << "KEY=VALUE: " << first << "=" << second << endl;
 		} else if (kv.size() == 1) {
 			retval[kv.front()] = "";
 		}
