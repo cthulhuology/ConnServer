@@ -9,7 +9,7 @@
 #include "user_map.h"
 #include "server.h"
 #include "util.h"
-#include "data.h"
+#include "object.h"
 
 // Login Module
 // 	for loging users into the system

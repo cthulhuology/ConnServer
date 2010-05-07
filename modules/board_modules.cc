@@ -6,7 +6,7 @@
 
 #include "board_modules.h"
 #include "database.h"
-#include "data.h"
+#include "object.h"
 
 BEGIN_REGISTRY
 REGISTER(add-post,AddPostModule)

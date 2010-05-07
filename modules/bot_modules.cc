@@ -9,7 +9,7 @@
 #include "bot_modules.h"
 #include "server.h"
 #include "user_map.h"
-#include "data.h"
+#include "object.h"
 
 BEGIN_REGISTRY
 REGISTER(bot-login,BotLoginModule)

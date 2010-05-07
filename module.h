@@ -10,7 +10,7 @@
 #define __HAVE_MODULES__
 
 #include "message.h"
-#include "esocket.h"
+#include "socket.h"
 
 #define VERSTR2(x,y) #x "_" #y
 #define VERSTR(x,y) VERSTR2(x,y)

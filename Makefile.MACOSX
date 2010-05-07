@@ -3,8 +3,8 @@ include rules.mk
 
 all : ConnServer libcs.dylib dbtool modules
 
-OBJS = data.o server.o database.o pool.o esocket.o message.o room.o module.o util.o user_map.o env.o dir.o interp.o 
-SRCS = $(patsubst %.o,%.cc,$(OBJS))
+OBJS = $(patsubst %.cc,%.o,$(SRCS))
+SRCS = $(wildcard *.cc)
 
 %.o : %.cc
 	g++ -fPIC -DPIC -c $< $(CFLAGS)

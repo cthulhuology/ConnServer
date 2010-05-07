@@ -13,11 +13,10 @@
 #include <iostream>
 #include <signal.h>
 
-#include "esocket.h"
+#include "socket.h"
 #include "message.h"
 #include "room.h"
-#include "data.h"
-
+#include "object.h"
 
 using namespace std;
 

@@ -16,9 +16,9 @@
 #include <iostream>
 #include <list>
 
-#include "esocket.h"
+#include "socket.h"
 #include "message.h"
-#include "data.h"
+#include "object.h"
 
 using namespace std;
 

@@ -1,11 +1,9 @@
-// esocket.cc
+// socket.cc
 //
-// Copyright (C) 2004, 2005 David J. Goehrig
-// All rights reserved
-//
+// © 2004, 2005, 2010 David J. Goehrig
 //
 
-#include "esocket.h"
+#include "socket.h"
 #include "pool.h"
 #include "server.h"
 #include "room.h"

@@ -1,16 +1,15 @@
 // user_map.cc
 //
-// Copyright (C) 2004, 2005 David J. Goehrig
-// All rights reserved
+// © 2004, 2005, 2010 David J. Goehrig
 //
 // Mapping users to clients and sockets and player ids so that we can track them
 //
 
 #include "user_map.h"
 #include "room.h"
-#include "esocket.h"
+#include "socket.h"
 #include "util.h"
-#include "data.h"
+#include "object.h"
 
 UserMap* UserMap::usermap = NULL;
 

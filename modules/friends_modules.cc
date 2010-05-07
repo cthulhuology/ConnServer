@@ -6,7 +6,7 @@
 
 #include "friends_modules.h"
 #include "database.h"
-#include "data.h"
+#include "object.h"
 #include "util.h"
 #include "user_map.h"
 
