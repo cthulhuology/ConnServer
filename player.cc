@@ -2,6 +2,9 @@
 //
 // © 2010 David J. Goehrig
 
+#include "player.h"
+#include "details.h"
+
 ALLOC_METHODS(Player)
 
 INIT_METHOD(Player)

@@ -10,6 +10,10 @@
 #include "server.h"
 #include "util.h"
 #include "object.h"
+#include "player.h"
+#include "friend.h"
+#include "login.h"
+#include "details.h"
 
 // Login Module
 // 	for loging users into the system

@@ -10,6 +10,7 @@
 #include "interp.h"
 #include "env.h"
 #include "pool.h"
+#include "login.h"
 
 Server* Server::instance = NULL;
 

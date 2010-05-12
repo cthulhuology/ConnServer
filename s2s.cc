@@ -8,17 +8,20 @@
 // forwarding, this only meant to handle coordination
 // and load balancing.
 
+#include "s2s.h"
+#include "socket.h"
+
 ServerMap* ServerMap::servermap = NULL;
 bool ServerMap::initialized = false;
 
-ServerMap* ServerMap::init(const string& s)
+bool ServerMap::init(const string& s)
 {
 	if (initialized) {
 		cerr << "ServerMap::init already initialized" << endl;
 		return servermap;
 	}
 	servermap = new ServerMap(s);
-	return servermap;
+	return servermap != NULL;
 }
 
 bool ServerMap::finalize(ServerMap* sm)
@@ -34,12 +37,13 @@ bool ServerMap::finalize(ServerMap* sm)
 
 bool ServerMap::add(const string& h, const string& p)
 {
+	Message m;
 	m.add("msg","s2sinit");
-	m.add("to",s);
+	m.add("to",h);
 	m.add("from",name);
 	
 	Socket* s = Socket::create();
-	if (! s->conn(s,p)) {
+	if (! s->conn(h.c_str(),p.c_str())) {
 		cerr << "ServerMap::add failed to connect: " << h << ":" << p << endl;
 		return false;
 	}
@@ -50,11 +54,11 @@ bool ServerMap::add(const string& h, const string& p)
 	return true;
 }
 
-bool SeverMap::remove(const string& s)
+bool ServerMap::remove(const string& s)
 {
 	Socket* k = svrs[s];
 	if (! k) {
-		cerr << "SeverMap::remove no such server " << s << endl;
+		cerr << "ServerMap::remove no such server " << s << endl;
 		return false;
 	}
 	Socket::finalize(k);
@@ -72,7 +76,7 @@ Socket* ServerMap::find(const string& s)
 	return k;
 }
 
-bool send(const string& s, Message& m) 
+bool ServerMap::send(const string& s, Message& m) 
 {
 	string ms = m.build();
 	Socket* k = svrs[s];
@@ -89,23 +93,23 @@ bool send(const string& s, Message& m)
 void split_host_port(const string& s, string& h, string& p)
 {
 	size_t i = s.find(":",0);
-	if (i == npos) {
+	if (i == s.npos) {
 		h = s;
 		p = "9999";
 		return;
 	}
 	h = s.substr(0,i-1);
-	p = s.substr(i+1,npos);
+	p = s.substr(i+1,s.npos);
 	return;
 }
 
-bool discover(vector<string>& v)
+bool ServerMap::discover(vector<string>& v)
 {
 	vector<string>::iterator i;
 	for (i = v.begin(); i != v.end(); ++i) {
 		string h,p;
 		split_host_port(*i,h,p);
-		if (NULL == find(h) && add(h,p)) { // only discover on servers we don't already have mapped.
+		if (NULL == ServerMap::find(h) && ServerMap::add(h,p)) { // only discover on servers we don't already have mapped.
 			Message m;
 			cerr << "Contacted " << *i << endl;
 			m.add("msg","s2sdiscover");

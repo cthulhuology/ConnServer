@@ -9,7 +9,7 @@
 #include "database.h"
 #include "object.h"
 #include "server.h"
-
+#include "login.h"
 
 BEGIN_REGISTRY
 REGISTER(new-event,NewEventModule);

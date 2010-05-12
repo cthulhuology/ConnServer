@@ -1,13 +1,41 @@
+
+all : build
+
 include ../.config
 
-all:
-	$(MAKE) -f Makefile.$(ARCH)
+SRCS = $(wildcard *.cc)
+MODS = $(patsubst %.cc,%_$(VERSION).dylib, $(wildcard *.cc))
 
-clean: 
-	$(MAKE) -f Makefile.$(ARCH) clean
+include $(ARCH).mk
 
+
+.PHONY: modules
+modules: $(MODS)
+
+.PHONY: clean
+clean:
+	rm -rf *.o *.dylib *.dSYM
+
+.PHONY: build
+build: 
+	./build.sh build
+
+.PHONY: install
 install:
-	$(MAKE) -f Makefile.$(ARCH) install
+	./build.sh install
 
+.PHONY: clean_install
+clean_install: 
+	sudo rm -rf /usr/local/lib/ConnServer/*.dylib
+	$(MAKE) install
+
+.PHONY: depends
 depends:
-	$(MAKE) -f Makefile.$(ARCH) depends
+	mkdep $(SRCS) $(CFLAGS)
+
+.depends:
+	touch .depends
+	$(MAKE) depends
+
+include .depend
+# DO NOT DELETE

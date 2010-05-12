@@ -6,6 +6,7 @@
 #include "database.h"
 #include "user_map.h"
 #include "server.h"
+#include "login.h"
 
 // Chat Module
 // 	for chat messages

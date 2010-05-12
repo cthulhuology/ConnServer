@@ -3,6 +3,8 @@
 // © 2010 David J. Goehrig
 //
 
+#include "login.h"
+
 Login::Login() {}
 Login::~Login() {}
 

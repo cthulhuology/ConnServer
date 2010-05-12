@@ -17,6 +17,8 @@
 #include "message.h"
 #include "room.h"
 #include "object.h"
+#include "event.h"
+#include "cs.h"
 
 using namespace std;
 

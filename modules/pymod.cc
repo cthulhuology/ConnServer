@@ -11,6 +11,7 @@
 #include "dir.h"
 #include "user_map.h"
 #include "server.h"
+#include "login.h"
 
 BEGIN_REGISTRY
 PyModule::register_pymodules(r);

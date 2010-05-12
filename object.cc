@@ -112,3 +112,61 @@ map<string,string> Object::parse(const string& s) {
 	return retval;
 }
 
+template <class T> string Object::encode(list<T*> l) {
+	string retval;
+	typename list<T*>::iterator i;
+	for ( i = l.begin(); i != l.end(); ++i) {
+		if (retval.empty()) {
+			if (*i == NULL) {
+				retval = "|";
+			} else {
+				retval = string_of_Uint64((*i)->id);
+			}
+		} else {
+			if (*i == NULL) {
+				retval += "|";
+			} else {
+				retval += "|" + string_of_Uint64((*i)->id);
+			}
+		}
+	}
+	return retval;
+}
+
+template <class T> list<T*> Object::decode(const string& s) {
+	list<T*> retval;
+	size_t i,o;		
+	o = 0;
+	for (i = 0; i < s.size(); ++i) {
+		if (s[i] != '|') continue;
+		string ids = s.substr(o,i-o);
+		if (ids.empty()) {
+			cerr << "[Object::decode] loading NULL entry" << endl;
+			retval.push_back(NULL);
+		} else {
+			UInt64 dbid = Uint64_of_string(s.substr(o,i-o));
+			cerr << "[Object::decode] loading " << dbid << endl;
+			T* ptr = Cache::find<T>(dbid);
+			if (ptr == NULL) {
+				cerr << "[Object::decode] Failed to find id " << dbid << endl;
+				retval.push_back(NULL);
+			} else {
+				retval.push_back(ptr);
+			}
+		}
+		o = (i+1);	
+	}
+	if ( i > o ) {
+		UInt64 dbid = Uint64_of_string(s.substr(o,i-o));
+		T* ptr = Cache::find<T>(dbid);
+		if (ptr == NULL) {
+			cerr << "[Object::decode] Failed to find id " << dbid << endl;
+			retval.push_back(NULL);
+		} else {
+			retval.push_back(ptr);
+		}
+	}
+	return retval;
+}
+
+

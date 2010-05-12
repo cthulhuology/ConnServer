@@ -110,7 +110,8 @@ admin.o: admin.cc admin.h ../module.h ../message.h \
   /System/Library/Frameworks/Python.framework/Versions/2.6/include/python2.6/object.h \
   ../server.h /usr/include/signal.h ../room.h ../object.h ../database.h \
   /opt/local/include/postgresql84/libpq-fe.h \
-  /opt/local/include/postgresql84/postgres_ext.h ../util.h ../user_map.h
+  /opt/local/include/postgresql84/postgres_ext.h ../util.h ../user_map.h \
+  ../event.h ../cache.h ../cs.h
 board_modules.o: board_modules.cc board_modules.h ../module.h \
   ../message.h /usr/include/c++/4.2.1/string \
   /usr/include/c++/4.2.1/i686-apple-darwin10/x86_64/bits/c++config.h \
@@ -334,7 +335,7 @@ bot_modules.o: bot_modules.cc bot_modules.h ../module.h ../message.h \
   /usr/include/arpa/inet.h ../server.h /usr/include/signal.h ../room.h \
   ../object.h ../database.h /opt/local/include/postgresql84/libpq-fe.h \
   /opt/local/include/postgresql84/postgres_ext.h ../util.h ../user_map.h \
-  ../user_map.h \
+  ../event.h ../cache.h ../cs.h ../user_map.h \
   /System/Library/Frameworks/Python.framework/Versions/2.6/include/python2.6/object.h
 chat_modules.o: chat_modules.cc chat_modules.h ../module.h ../message.h \
   /usr/include/c++/4.2.1/string \
@@ -448,7 +449,7 @@ chat_modules.o: chat_modules.cc chat_modules.h ../module.h ../message.h \
   /opt/local/include/postgresql84/libpq-fe.h \
   /opt/local/include/postgresql84/postgres_ext.h ../user_map.h \
   ../server.h /usr/include/signal.h ../room.h ../object.h ../database.h \
-  ../util.h ../user_map.h
+  ../util.h ../user_map.h ../event.h ../cache.h ../cs.h
 event_modules.o: event_modules.cc event_modules.h ../module.h \
   ../message.h /usr/include/c++/4.2.1/string \
   /usr/include/c++/4.2.1/i686-apple-darwin10/x86_64/bits/c++config.h \
@@ -562,7 +563,7 @@ event_modules.o: event_modules.cc event_modules.h ../module.h \
   /opt/local/include/postgresql84/postgres_ext.h \
   /System/Library/Frameworks/Python.framework/Versions/2.6/include/python2.6/object.h \
   ../server.h /usr/include/signal.h ../room.h ../object.h ../database.h \
-  ../util.h ../user_map.h
+  ../util.h ../user_map.h ../event.h ../cache.h ../cs.h
 friends_modules.o: friends_modules.cc friends_modules.h ../module.h \
   ../message.h /usr/include/c++/4.2.1/string \
   /usr/include/c++/4.2.1/i686-apple-darwin10/x86_64/bits/c++config.h \
@@ -897,7 +898,7 @@ player_modules.o: player_modules.cc /usr/include/c++/4.2.1/list \
   /opt/local/include/postgresql84/libpq-fe.h \
   /opt/local/include/postgresql84/postgres_ext.h ../user_map.h \
   ../server.h /usr/include/signal.h ../room.h ../object.h ../database.h \
-  ../util.h ../user_map.h ../util.h \
+  ../util.h ../user_map.h ../event.h ../cache.h ../cs.h ../util.h \
   /System/Library/Frameworks/Python.framework/Versions/2.6/include/python2.6/object.h
 pymod.o: pymod.cc pymod.h \
   /System/Library/Frameworks/Python.framework/Versions/2.6/include/python2.6/Python.h \
@@ -1071,7 +1072,8 @@ pymod.o: pymod.cc pymod.h \
   /opt/local/include/postgresql84/libpq-fe.h \
   /opt/local/include/postgresql84/postgres_ext.h ../util.h ../user_map.h \
   ../env.h ../dir.h /usr/include/dirent.h /usr/include/sys/dirent.h \
-  ../user_map.h ../server.h /usr/include/signal.h ../room.h
+  ../user_map.h ../server.h /usr/include/signal.h ../room.h ../event.h \
+  ../cache.h ../cs.h
 test_module.o: test_module.cc test_module.h ../module.h ../message.h \
   /usr/include/c++/4.2.1/string \
   /usr/include/c++/4.2.1/i686-apple-darwin10/x86_64/bits/c++config.h \
@@ -1292,4 +1294,5 @@ watcher_modules.o: watcher_modules.cc watcher_modules.h ../module.h \
   /usr/include/arpa/inet.h ../server.h /usr/include/signal.h ../room.h \
   ../object.h ../database.h /opt/local/include/postgresql84/libpq-fe.h \
   /opt/local/include/postgresql84/postgres_ext.h ../util.h ../user_map.h \
-  ../room.h ../database.h ../util.h ../user_map.h
+  ../event.h ../cache.h ../cs.h ../room.h ../database.h ../util.h \
+  ../user_map.h

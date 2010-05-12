@@ -13,9 +13,17 @@
 // client go there, than to relay every damn message the client wants to send
 // to bob.
 
+#include <string>
+#include <map>
+#include <iostream>
+using namespace std;
+
+#include "message.h"
+#include "socket.h"
+
 class ServerMap {
 	public:
-		ServerMap* init(const string& s);
+		bool init(const string& s);
 		bool finalize(ServerMap* sm);
 		bool add(const string& h, const string& p);
 		bool remove(const string& s);

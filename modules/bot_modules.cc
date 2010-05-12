@@ -10,6 +10,7 @@
 #include "server.h"
 #include "user_map.h"
 #include "object.h"
+#include "login.h"
 
 BEGIN_REGISTRY
 REGISTER(bot-login,BotLoginModule)

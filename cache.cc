@@ -3,6 +3,8 @@
 // © 2010 David J. Goehrig
 // 
 
+#include "cache.h"
+
 Cache* Cache::cache = NULL;
 
 Cache::Cache() {};

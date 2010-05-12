@@ -10,6 +10,7 @@
 #include "socket.h"
 #include "util.h"
 #include "object.h"
+#include "login.h"
 
 UserMap* UserMap::usermap = NULL;
 

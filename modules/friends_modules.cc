@@ -9,6 +9,8 @@
 #include "object.h"
 #include "util.h"
 #include "user_map.h"
+#include "login.h"
+#include "friend.h"
 
 using namespace std;
 

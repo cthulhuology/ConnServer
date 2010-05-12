@@ -10,7 +10,7 @@ echo $VERSION
 
 case "$1" in
 	build)
-		make -f Makefile.$ARCH modules
+		make modules
 	;;
 	install)
 		sudo mkdir -p /usr/local/lib/ConnServer
