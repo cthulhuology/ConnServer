@@ -4,7 +4,7 @@ all : build
 include ../.config
 
 SRCS = $(wildcard *.cc)
-MODS = $(patsubst %.cc,%_$(VERSION).dylib, $(wildcard *.cc))
+MODS = $(patsubst %.cc,%_$(VERSION).$(LIBEXT), $(wildcard *.cc))
 
 include $(ARCH).mk
 
@@ -14,7 +14,7 @@ modules: $(MODS)
 
 .PHONY: clean
 clean:
-	rm -rf *.o *.dylib *.dSYM
+	rm -rf *.o *.$(LIBEXT) *.dSYM
 
 .PHONY: build
 build: 
@@ -26,7 +26,7 @@ install:
 
 .PHONY: clean_install
 clean_install: 
-	sudo rm -rf /usr/local/lib/ConnServer/*.dylib
+	sudo rm -rf /usr/local/lib/ConnServer/*.$(LIBEXT)
 	$(MAKE) install
 
 .PHONY: depends
