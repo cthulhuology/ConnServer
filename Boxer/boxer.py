@@ -2,6 +2,7 @@
 
 from time import clock
 from messages import Message
+from math import sqrt
 
 class Boxer:
 	"""Represents a boxer in all of the scripts"""
@@ -15,7 +16,9 @@ class Boxer:
 		self.grit = msg['grit']
 		self.guts = msg['guts']
 		self.smarts = msg['smarts']
+		self.arms = { 'left' : 'down', 'right' : 'down' }
 		self.stats = { 'feet' : 100.0, 'fists' : 100.0, 'grit' : 100.0, 'guts' : 100.0, 'smarts' : 100.0 }
+		self.position = { 'x' : 0, 'y' : 0 }
 	def heartbeat(self):
 		"""Updates a boxer's stats based on their stats"""
 		self.stats = { 
@@ -52,6 +55,17 @@ class Boxer:
 	def taunted(self,damage):
 		"""A taunted boxer takes mental damage represented by smarts"""
 		self.stats['smarts'] = max(0,self.stats['smarts'] - damage)
+	def block(self,punch):
+		"""Determines if the punch is blocked or not"""
+		if self.arms[punch.hand] == punch.zone():
+			return 0
+		return 1
+	def range(self,boxer): 
+		"""Determines the distance between boxers"""
+		return sqrt((self.position.x - boxer.position.x)**2 + (self.position.y - boxer.position.y)**2)
+	def power(self,punch,boxer):
+		"""Determine the power of a punch based on zone"""
+		return punch.power(self.range(boxer), self.block(punch))
 
 
 m = Message()
