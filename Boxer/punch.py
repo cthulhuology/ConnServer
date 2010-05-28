@@ -1,5 +1,11 @@
+# punch.py
+# coding=utf8
+#
+# © 2010 David J. Goehrig
+#
+
 import math
-import collections
+import unittest
 
 class Punch:
 	"""Represents a punch"""
@@ -25,11 +31,14 @@ class Punch:
 		"""Delivers the actual power rating of the punch"""
 		return block * self.powers(self.ranges(distance))
 	def zone(self):
+		"""Determines where the punch lands"""
 		return ({ 
 			'left' : 'right',
 			'right' : 'left',
 		}[self.hand],self.height)
-			
+	def cost(self):
+		"""Determines the level of effort to throw the punch"""
+		return 0
 
 class Jab(Punch):
 	"""Represents a basic jab"""
@@ -42,6 +51,8 @@ class Jab(Punch):
 			'far': 0,
 			'out': 0,
 		}[range]
+	def cost(self):
+		return 1
 
 class Hook(Punch):
 	"""Represents all manners of hooks"""
@@ -54,6 +65,8 @@ class Hook(Punch):
 			'far': 4,
 			'out': 0,
 		}[range]
+	def cost(self):
+		return 4
 
 class UpperCut(Punch):
 	"""Represents an uppercut"""
@@ -68,6 +81,8 @@ class UpperCut(Punch):
 		}[range]
 	def zone(self):
 		return ('center',self.height)
+	def cost(self):
+		return 4
 
 class Cross(Punch):
 	"""Represents a straight cross punch"""
@@ -80,20 +95,6 @@ class Cross(Punch):
 			'far': 5,
 			'out': 0,
 		}[range]
-
-class Combo(collections.deque):
-	"""Defines a sequence of punches"""
-	def __init__(self,punches):
-		for p in punches:
-			self.append(p)	
-
-c = Combo([
-	Jab('left','body'),
-	Hook('right','body'),
-	UpperCut('left','belt'),
-	Cross('left','head') ])
-
-for p in c:
-	for r in [3,8,13,18,23]:
-		print p,'at',r,'->',p.power(r,1)
+	def cost(self):
+		return 3
 

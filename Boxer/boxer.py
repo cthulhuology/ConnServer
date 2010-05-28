@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
 from time import clock
-from messages import Message
 from math import sqrt
+from messages import Message
 
 class Boxer:
 	"""Represents a boxer in all of the scripts"""
@@ -33,19 +33,19 @@ class Boxer:
 		delta = min(self.stats['feet'],distance)
 		self.stats['feet'] = max(0,self.stats['feet'] - delta)
 		return delta
-	def punch(self,power):
+	def punch(self,punch):
 		"""Delivers a punch to an opponent, assumes already hit, power ranges from 1-5"""
-		damage = self.stats['fists'] * power**(1 + self.stats['smarts']/100) / 100
-		self.stats['fists'] = max(0,self.stats['fists'] -  power)
+		damage = self.stats['fists'] * punch.power()**(1 + self.stats['smarts']/100) / 100
+		self.stats['fists'] = max(0,self.stats['fists'] -  punch.cost())
 		return damage
-	def feint(self,power):
+	def feint(self,punch):
 		"""Fakes out an opponent, wears out their guts, power ranges from 1-5"""
-		damage = self.stats['feet'] * power**(1 + self.stats['smarts']/100) / 100
-		self.stats['feet'] = max(0,self.stats['feet'] -  power)
+		damage = self.stats['feet'] * punch.power()**(1 + self.stats['smarts']/100) / 100
+		self.stats['feet'] = max(0,self.stats['feet'] -  punch.cost())
 		return damage
-	def mock(self,power):
+	def mock(self,insult):
 		"""Mock an opponent to make them loose their cool"""
-		damage = self.stats['smarts'] * power**(1 + self.stats['smarts']/100) / 100
+		damage = self.stats['smarts'] * insult.power()**(1 + self.stats['smarts']/100) / 100
 	def punched(self,damage):
 		"""A punched boxer takes physical damage represented by grit"""
 		self.stats['grit'] = max(0,self.stats['grit'] - damage)
