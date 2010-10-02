@@ -12,6 +12,6 @@ INIT_METHOD(Administrators)
 END
 
 TOS_METHOD(Administrators)
-	return "type:" + type() + ",players=" + encode<Player>(players);	
+	return "type:" + type() + "\nplayers=" + encode<Player>(players);	
 END
 

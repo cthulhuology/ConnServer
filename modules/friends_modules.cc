@@ -81,8 +81,7 @@ MODULE_PROCESS(AcceptFriendModule)
 	}
 	
 	Message msg;
-	msg.add("msg","add-friend");
-	msg.add("player",string_of_Uint64(c->login()->player->id));
+	msg.add("msg","add-friend").add("player",string_of_Uint64(c->login()->player->id));
 	if ( m["accept"] != "0" ) {
 		msg.add("status","2");		
 		l->sock->send(msg);

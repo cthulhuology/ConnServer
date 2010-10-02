@@ -34,9 +34,7 @@ MODULE_PROCESS(GetCurrentHourModule)
 	t = time(NULL);
 	tmp = localtime(&t);
 
-	msg.add("msg","getCurrentHour");
-	msg.add("hour",string_of_int(tmp->tm_hour));
-	msg.add("status","0");
+	msg.add("msg","getCurrentHour").add("hour",string_of_int(tmp->tm_hour)).add("status","0");
 
 	return c->send(msg);
 }
@@ -44,7 +42,6 @@ MODULE_PROCESS(GetCurrentHourModule)
 MODULE_PROCESS(TimeModule)
 {
 	time_t t = time(NULL);
-	m.add("time",string_of_int(t));
-	m.add("status","0");
+	m.add("time",string_of_int(t)).add("status","0");
 	return c->send(m);
 }

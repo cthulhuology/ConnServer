@@ -22,7 +22,7 @@ string Object::tos() { return string(""); }
 
 UInt64 Object::create(Database* d, const string& t) {
 	UInt64 retval = 0LL;
-	string query = "SELECT * FROM new_object('" + t + "','')";
+	string query = "SELECT * FROM new_object(" + string_of_Uint64(Cache::next()) + ",'" + t + "','')";
 	cerr << "[Object::create] " << query << endl;
 	Result* res = d->query(query);
 	if (res == NULL || ! res->success() || res->rows != 1) {
@@ -94,7 +94,7 @@ const string Object::type() {
 
 map<string,string> Object::parse(const string& s) {
 	map<string,string> retval;
-	list<string> kv_pairs = split(',',s);
+	list<string> kv_pairs = split('\n',s);
 	list<string>::iterator i;
 	for (i = kv_pairs.begin(); i != kv_pairs.end(); ++i) {
 		cerr << "--- " << *i << endl;
@@ -118,15 +118,15 @@ template <class T> string Object::encode(list<T*> l) {
 	for ( i = l.begin(); i != l.end(); ++i) {
 		if (retval.empty()) {
 			if (*i == NULL) {
-				retval = "|";
+				retval = ",";
 			} else {
 				retval = string_of_Uint64((*i)->id);
 			}
 		} else {
 			if (*i == NULL) {
-				retval += "|";
+				retval += ",";
 			} else {
-				retval += "|" + string_of_Uint64((*i)->id);
+				retval += "," + string_of_Uint64((*i)->id);
 			}
 		}
 	}
@@ -138,7 +138,7 @@ template <class T> list<T*> Object::decode(const string& s) {
 	size_t i,o;		
 	o = 0;
 	for (i = 0; i < s.size(); ++i) {
-		if (s[i] != '|') continue;
+		if (s[i] != ',') continue;
 		string ids = s.substr(o,i-o);
 		if (ids.empty()) {
 			cerr << "[Object::decode] loading NULL entry" << endl;

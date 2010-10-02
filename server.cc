@@ -328,19 +328,19 @@ void Server::startEvents()
 	}
 go_again:
 	if (instance->events.size() <= 0 || instance->watcher == NULL) return;
-	EventTimer et = instance->events.front();
+	Event* e = instance->events.front();
 	cerr << "[Server::startEvents] time " <<  ctime(&t);
-	cerr << "[Server::startEvents] next event " << ctime(&et.time) << endl;
-	if (et.time - HEAD_START  <= t) {
-		if ( et.event == NULL || t - et.time > 3600) {
+	cerr << "[Server::startEvents] next event " << ctime(&e->time) << endl;
+	if (e->time - HEAD_START  <= t) {
+		if (t - e->time > 3600) {
 			cerr << "[Server::startEvents] Stale event found in queue" << endl;
 			instance->events.pop_front();
 			goto go_again;
 		}
 		Message m;
 		m.add("msg","start-event");
-		m.add("event",string_of_Uint64(et.event->id));
-		m.add("time",string_of_int(et.time));
+		m.add("event",string_of_Uint64(e->id));
+		m.add("time",string_of_int(e->time));
 		cerr << "[Server::startEvents] PROCESSING " << m.dump() << endl;
 		mod->process(instance->watcher,m);
 		instance->events.pop_front();
@@ -355,62 +355,35 @@ void Server::alarmhandler(int s)
 
 void Server::addEvents(list<Event*>& el)
 {
-	EventTimer et;
 	list<Event*>::iterator j;
 	for (j = el.begin(); j != el.end(); ++j) {
-		et.time = (*j)->date;
-		et.event = *j;
-		list<EventTimer>::iterator i;
+		list<Event*>::iterator i;
 		bool inserted = false;
 		for (i = instance->events.begin(); i != instance->events.end(); ++i) {
-			if (i->time > et.time) {
-				instance->events.insert(i,et);
+			if ((*i)->time > (*j)->date) {
+				instance->events.insert(i,*j);
 				inserted = true;
 			}
 		}
 		if (! inserted) {
-			instance->events.push_back(et);
+			instance->events.push_back(*j);
 		}
 	}
-	//instance->events.push_back(et);
 }
 
 void Server::removeEvent(Event* e)
 {
-	list<EventTimer>::iterator i;
-	for (i = instance->events.begin(); i != instance->events.end(); ++i) {
-		if (i->event == e) {
-			EventTimer et = *i;
-			instance->events.remove(et);
-			return;
-		}
-	}
+	instance->events.remove(e);
 }
 
 bool Server::saveEvents()
 {
 	bool retval = true;
-	string evs;
-	list<EventTimer>::iterator i;
-	for (i = instance->events.begin(); i != instance->events.end(); ++i) {
-		if (evs.empty()) {
-			evs = string_of_int(i->time) + "|" + (i->event == NULL ? "" : string_of_Uint64(i->event->id));
-		} else {
-			evs += "," + string_of_int(i->time) + "|" + (i->event == NULL ? "" : string_of_Uint64(i->event->id));
-		}
-	}
-	string event_update = "UPDATE events SET events = '" + evs + "' WHERE server = " + string_of_Uint64(cs()->id);
+	list<Event*>::iterator i;
 	Database* d = DBPool::grab();
 	d->begin();
-
-	Result* res = d->query(event_update);
-	if ( res == NULL || ! res->success() || ! d->commit()) {
-		d->rollback();
-		cerr << "[Server::saveEvents] failed " << endl;
-		retval = false;
-	}
-	
-	delete res;
+	for (i = instance->events.begin(); i != instance->events.end(); ++i) (*i)->save(d);
+	d->commit();
 	DBPool::release(d);
 	return retval;
 }
@@ -427,32 +400,22 @@ bool Server::loadEvents()
 	Database* d = DBPool::grab();
 	d->begin();
 
-	string event_load = "SELECT events.events FROM events WHERE server = " + string_of_Uint64(c->id);
+	string event_load = "SELECT * FROM find_objects('5Event')"; 
 	cerr << "[Server::loadEvents] " << event_load << endl;
 
 	Result* res = d->query(event_load);
 	if (! res || ! res->success() || ! d->commit()) {
 		cerr  << "[Server::loadEvents] failed " << endl;	
 		d->rollback();
-		retval = false;
-	} else {
-		if (res->rows == 0) goto cleanup;
-		string r = (*res)["events"][0];
-		if (r.empty()) goto cleanup;
-		list<string> ets = split(',', r);
-		list<string>::iterator i;
-		for (i = ets.begin(); i != ets.end(); ++i) {
-			cerr << "[Server::loadEvents] found EventTimer: " << *i << endl;
-			list<string> fields = split('|',*i);
-			EventTimer et;
-			et.time = int_of_string(fields.front());
-			fields.pop_front();
-			cerr << "[Server::loadEvents] loading Event " << fields.front() << " at " << ctime(&et.time) << endl;
-			et.event = Cache::find<Event>(fields.front());
-			instance->events.push_back(et);
-		}
+		delete res;
+		DBPool::release(d);
+		return false;
 	}
-cleanup:
+	for (int i = 0; i < res->rows; ++i) {
+		string r = (*res)["find_objects"][i];
+		Event* e = Cache::find<Event>(r);
+		instance->events.push_back(e);
+	}
 	delete res;
 	DBPool::release(d);
 	return retval;
@@ -461,13 +424,13 @@ cleanup:
 bool Server::pendingEvents(Message& m)
 {
 	int j = 0;
-	list<EventTimer>::iterator i;
+	list<Event*>::iterator i;
 	for ( i = instance->events.begin(); i != instance->events.end(); ++i) {
 		++j;
 		string key = string_of_int(j);
-		string value = string_of_Uint64(i->event->id)
-			+ "|" + i->event->name
-			+ "|" + string_of_int(i->time);
+		string value = "id:" + string_of_Uint64((*i)->id)
+			+ "\\nname:" + (*i)->name
+			+ "\\ntime:" + string_of_int((*i)->time);
 		m.add(key,value);
 	}	
 	return j > 0;

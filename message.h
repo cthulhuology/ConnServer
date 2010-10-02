@@ -27,10 +27,10 @@ class Message {
 		vector<string>* keys();
 		const string& operator[](const char* k);
 		const string& operator[](const string& k);
-		void add(const string& k, const string& v);
-		void add(const char* k, const char* v);
-		void remove(const string& k);
-		void remove(const char* k);
+		Message& add(const string& k, const string& v);
+		Message& add(const char* k, const char* v);
+		Message& remove(const string& k);
+		Message& remove(const char* k);
 		bool check(const string& params);
 		Message();
 		Message(const string& m);

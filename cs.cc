@@ -17,9 +17,9 @@ END
 
 TOS_METHOD(CS)
 	return "type:" + type() 
-		+ ",name:" + name 
-		+ ",ipaddr:" + ipaddr 
-		+ ",port:" + string_of_int(port) 
-		+ ",nat_port:" + string_of_int(nat_port);
+		+ "\nname:" + name 
+		+ "\nipaddr:" + ipaddr 
+		+ "\nport:" + string_of_int(port) 
+		+ "\nnat_port:" + string_of_int(nat_port);
 END
 

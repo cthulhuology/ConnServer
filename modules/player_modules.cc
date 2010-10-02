@@ -47,7 +47,7 @@ MODULE_PROCESS(LoginModule)
 	Result* res = d->query(lq);
 	if ( res == NULL || ! res->success() ) {
 		cerr << "LoginModule failed " << d->error() << endl;
-		m.add("status","5");
+		m.add("status","invalid user");
 		delete res;
 		d->rollback();
 		DBPool::release(d);

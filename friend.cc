@@ -18,10 +18,10 @@ END
 
 TOS_METHOD(Friend)
 	return "type:" + type() 
-		+ ",player:" + (player == NULL ? "" : string_of_Uint64(player->id)) 
-		+ ",category:" + category
-		+ ",rating:" + rating 
-		+ ",personality:" + personality 
-		+ ",notes:" + notes;
+		+ "\nplayer:" + (player == NULL ? "" : string_of_Uint64(player->id)) 
+		+ "\ncategory:" + category
+		+ "\nrating:" + rating 
+		+ "\npersonality:" + personality 
+		+ "\nnotes:" + notes;
 END
 

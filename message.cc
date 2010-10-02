@@ -32,9 +32,9 @@ string Message::build()
 		string k = (*i).first;
 		string v = (*i).second;
 		r +=  k + ":" + v;
-		if (++i !=  data.end()) r += ",";
+		if (++i !=  data.end()) r += "\n";
 	}
-	r += "~";
+	r += "\n";
 	return r;
 }
 
@@ -47,7 +47,7 @@ string Message::dump()
 			if ( r.empty()) {
 				r = i->first;
 			} else {
-				r += "," + i->first;
+				r += "\n" + i->first;
 			}
 			r += ":";
 			r += i->second;
@@ -79,23 +79,27 @@ const string& Message::operator[](const string& k)
 	return data[k];
 }
 
-void Message::add(const string& k, const string& v)
+Message& Message::add(const string& k, const string& v)
 {
 	data[k] = v;
+	return *this;
 }
 
-void Message::add(const char* k, const char* v){
+Message& Message::add(const char* k, const char* v){
 	data[string(k)] = string(v);
+	return *this;
 }
 
-void Message::remove(const string& k)
+Message& Message::remove(const string& k)
 {
 	data.erase(k);
+	return *this;
 }
 
-void Message::remove(const char* k)
+Message& Message::remove(const char* k)
 {
 	data.erase(k);
+	return *this;
 }
 
 Message::Message()
@@ -170,7 +174,7 @@ const char* Message::find_key(const char* m, vector<string>* v)
 {
 	const char* s = m;
 	if (s ==  NULL || *s == '\n' || *s == '\0' || *s == '\r') return NULL;
-	while ( s && *s != '\0' && *s != ':' && *s != ',' && *s != '\n' && *s != '\r') s++;
+	while ( s && *s != '\0' && *s != ':' && *s != '\n' && *s != '\r') s++;
 	if (*s == ':') { // We have a well formed key)
 		v->push_back(string(m,(int)(s-m)));
 		return find_value(s+1,v);
@@ -186,10 +190,10 @@ const char* Message::find_value(const char* m, vector<string>* v)
 		v->push_back("");
 		return NULL;
 	}
-	while ( s && *s != '\0' && *s != ':' && *s != ',' && *s != '\n' && *s != '\r') s++;
-	if (*s == ',' || *s == '\0' || *s == '\n' || *s == '\r') {
+	while ( s && *s != '\0' && *s != ':' && *s != '\n' && *s != '\r') s++;
+	if ( *s == '\0' || *s == '\n' || *s == '\r') {
 		v->push_back(string(m,(int)(s-m)));
-		if (*s != '\0' && *s != '\n' && *s != '\r') return find_key(s+1,v);
+		if (*s != '\0') return find_key(s+1,v);
 		return NULL;
 	}
 	cerr << "Message::find_value Invalid key:value pair, empty value, key:key [" << m << "]" << endl;

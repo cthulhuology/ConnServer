@@ -28,7 +28,7 @@ class AI(Boxer):
 				'head' : 0,
 				'body' : 0,
 				'belt' : 0,
-			}
+			},
 			'connected' : {
 				'left' : 0,
 				'right' : 0,
@@ -57,7 +57,13 @@ class AI(Boxer):
 	def defenses(self):
 		self.arms = { 'left' : 'down', 'right' : 'down' }
 	def movements(self):
-		self.move(1)
 		self.position[x] += 1
+	def distance(self,x):
+		return max(0,self.range(self.opponent) + x)
 	def think(self):
-		
+		costs = map( lambda x: self.selection.cost(self.distance(x)), [ -10, -5, 0, 5, 10 ] )
+		print(costs)
+
+
+
+

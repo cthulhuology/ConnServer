@@ -19,13 +19,13 @@ END
 
 TOS_METHOD(Post)
 	return "type:" + type() 
-		+ ",poster:" + (poster == NULL ? "" : string_of_Uint64(poster->id))
-		+ ",parent:" + (parent == NULL ? "" : string_of_Uint64(parent->id))
-		+ ",replies:" + encode<Post>(replies)
-		+ ",subject:" + subject
-		+ ",date:" + string_of_int(date)
-		+ ",last:" + string_of_int(last)
-		+ ",body:" + body;
+		+ "\nposter:" + (poster == NULL ? "" : string_of_Uint64(poster->id))
+		+ "\nparent:" + (parent == NULL ? "" : string_of_Uint64(parent->id))
+		+ "\nreplies:" + encode<Post>(replies)
+		+ "\nsubject:" + subject
+		+ "\ndate:" + string_of_int(date)
+		+ "\nlast:" + string_of_int(last)
+		+ "\nbody:" + body;
 END
 
 string Post::display() {

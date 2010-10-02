@@ -17,23 +17,34 @@ Cache::create(const string& s)
 
 	cache = new Cache();
 	
-	string load_cache = "SELECT value FROM objects WHERE id = " + s;
+	string load_cache = "SELECT * FROM load_object(" + s + "::bigint)";
 	Database* d = DBPool::grab();
 	d->begin();
 	Result* res = d->query(load_cache);
 
 	if (res == NULL || ! res->success() || res->rows != 1) {
 		cerr << "[Cache::init] failed " << d->error() << endl;
-		cache->next_guid = Uint64_of_string(s);
+		cache->next_guid = Uint64_of_string(s) + 1;
 		cache->idspace = Uint64_of_string(s);
-		cache->id = Object::create(d,cache->type());
-		cache->save(d);
+		cache->id = Uint64_of_string(s);
+		string query = "SELECT * FROM new_object(" + s + ",'" + cache->type() + "','" + cache->tos() + "')";
+		cerr << "[Cache::init] " << query << endl;
+		delete res;
+		d->rollback();
+		d->begin();
+		res = d->query(query);
+		if (res == NULL || ! res->success() || res->rows != 1) {
+			cerr << "[Cache::init] failed to initialize cache" << d->error() << endl;
+			d->rollback();
+			exit(1);
+		}
 		d->commit();
 		delete res;
 		DBPool::release(d);
 		return true;
 	} else {
-		string c = (*res)["value"][0];
+		string c = (*res)["load_object"][0];
+		cerr << "[Cache::init] loading " << c << endl;
 		d->commit();
 		delete res;
 		DBPool::release(d);
@@ -62,14 +73,14 @@ TOS_METHOD(Cache)
 	map<string,int>::iterator i;
 	for (i = allocated.begin(); i != allocated.end(); ++i) {
 		if (stats.empty()) {
-			stats = "," + i->first + ":" + string_of_int(i->second);
+			stats = "\n" + i->first + ":" + string_of_int(i->second);
 		} else {
-			stats += "," + i->first + ":" + string_of_int(i->second);
+			stats += "\n" + i->first + ":" + string_of_int(i->second);
 		}
 	}
 	return "type:" + type()  
-		+ ",idspace:" + string_of_Uint64(idspace)
-		+ ",next_guid:" + string_of_Uint64(next_guid)
+		+ "\nidspace:" + string_of_Uint64(idspace)
+		+ "\nnext_guid:" + string_of_Uint64(next_guid)
 		+ stats;
 END
 
@@ -102,17 +113,10 @@ Cache::store()
 	map<UInt64,ID>::iterator i;
 	Database* d = DBPool::grab();
 	d->begin();
-	for (i = cache->obj_id_map.begin(); i != cache->obj_id_map.end(); ++i) {
-		if (i->second) {
-			retval &= i->second->save(d);
-		}
-	}
+	for (i = cache->obj_id_map.begin(); i != cache->obj_id_map.end(); ++i) 
+		if (i->second) retval &= i->second->save(d);
 	retval &= cache->save(d);
-	if (retval) {
-		d->commit();
-	} else {
-		d->rollback();
-	}
+	retval ? d->commit() : d->rollback();
 	DBPool::release(d);
 	return retval;
 }

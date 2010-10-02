@@ -28,20 +28,20 @@ END
 
 TOS_METHOD(Details)
 	return "type:" + type() 
-		+ "&name:" + name 
-		+ "&email:" + email 
-		+ "&phone:" + phone 
-		+ "&cell:" + cell 
-		+ ",street:" + street 
-		+ ",apartment:" + apartment 
-		+ ",city:" + city 
-		+ ",state:" + state 
-		+ ",zip:" + zip 
-		+ ",country:" + country 
-		+ ",dob:" + dob 
-		+ ",sex:" + sex 
-		+ ",occupation:" + occupation 
-		+ ",income:" + income 
-		+ ",spam:" + spam;
+		+ "\nname:" + name 
+		+ "\nemail:" + email 
+		+ "\nphone:" + phone 
+		+ "\ncell:" + cell 
+		+ "\nstreet:" + street 
+		+ "\napartment:" + apartment 
+		+ "\ncity:" + city 
+		+ "\nstate:" + state 
+		+ "\nzip:" + zip 
+		+ "\ncountry:" + country 
+		+ "\ndob:" + dob 
+		+ "\nsex:" + sex 
+		+ "\noccupation:" + occupation 
+		+ "\nincome:" + income 
+		+ "\nspam:" + spam;
 END
 

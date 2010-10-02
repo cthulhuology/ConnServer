@@ -22,15 +22,6 @@
 
 using namespace std;
 
-class EventTimer {
-	public:
-		EventTimer() {};
-		~EventTimer() {};
-		time_t time;
-		Event* event;
-		bool operator==(const EventTimer& et) { event == et.event; };
-};
-
 class Server {
 	public:
 	static bool init(int argc, char** argv);	
@@ -72,7 +63,7 @@ class Server {
 	Socket* watcher;
 	Socket* sock;
 	map<string,Room*> rooms;
-	list<EventTimer> events;
+	list<Event*> events;
 	bool pong_flag;
 	bool reload_flag;
 	static void quithandler(int s);

@@ -196,7 +196,7 @@ Database::Database(const string& info) :
 {
 	int retries = 0;
 	begun = false;
-
+	cerr << "Database::Database connecting to " << info << endl;
 	conn = PQconnectdb(info.c_str());
 	if (conn == NULL) {
 		cerr << "Database::Database insufficient memory to establish connection" << endl;

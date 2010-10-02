@@ -23,7 +23,7 @@ END
 
 TOS_METHOD(Login)
 	return "type:" + type() 
-		+ ",player:" + (player == NULL ? "" : string_of_Uint64(player->id))
-		+ ",server:" + (server == NULL ? "" : string_of_Uint64(server->id));
+		+ "\nplayer:" + (player == NULL ? "" : string_of_Uint64(player->id))
+		+ "\nserver:" + (server == NULL ? "" : string_of_Uint64(server->id));
 END
 

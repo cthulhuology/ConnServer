@@ -16,16 +16,9 @@ create table objects (
 	updated timestamp
 );
 
--- a sequence for tacking ids
-drop sequence guid_seq;
-create sequence guid_seq minvalue $MIN maxvalue $MAX owned by objects.id;
-
 -- a function to create new objects
-create or replace function new_object(_type text, _value text) returns bigint as \$\$
-declare
-	_id bigint;
+create or replace function new_object(_id bigint, _type text, _value text) returns bigint as \$\$
 begin
-	select into _id nextval('guid_seq');	
 	insert into objects (id,type,value,created,updated) values (_id,_type,_value, timestamp 'now', timestamp 'now');
 	return _id;
 end;

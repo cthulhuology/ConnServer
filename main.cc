@@ -55,7 +55,10 @@ main ( int argc, char** argv )
 		}
 		if (cpid == 0) {
 			cerr << "Respawn server" << endl;
-			Server::init(argc,argv);
+			if (!Server::init(argc,argv)) {
+				cerr << "Failed to initialize server" << endl;
+				exit(1);
+			}
 			Server::serve();
 			Server::finalize();
 		} else {
