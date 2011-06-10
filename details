@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+
+from os import system
+
+def dump(obj):
+	i = obj.iterkeys
+	return "\n".join(map(lambda(x): x + ':' + str(obj[x]),i()))
+
+system("./dbtool/dbtool 0 add details '" + dump({
+	'name' : 'Dave',
+	'email' : 'dave@nexttolast.com',
+	'phone' : '7163482984',
+	'cell' : '7163482984',
+	'street' : '527 Auburn Ave',
+	'apartment' : 4,
+	'city' : 'Buffalo',
+	'state' : 'NY',
+	'zip' : '14222',
+	'country' : 'USA',
+	'dob' : '10/6/1976',
+	'sex' : 'male',
+	'occupation' : 'programmer',
+	'income' : '80k',
+	'spam' : 'no'
+}) + "'")

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ -z "$1" || -z "$2" || -z "$3" ]]; then
+	echo "Usage: $0 username password avatar";
+	exit;
+fi
+
+./dbtool/dbtool 0 add player "username:$1,password:$2,avatar:$3,posts:,"
