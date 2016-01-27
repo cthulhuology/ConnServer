@@ -10,6 +10,7 @@
 #include "message.h"
 #include "module.h"
 #include "user_map.h"
+#include <string.h>
 
 Socket* Socket::create()
 {

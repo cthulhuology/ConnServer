@@ -11,7 +11,6 @@
 #include "util.h"
 #include "object.h"
 #include "player.h"
-#include "friend.h"
 #include "login.h"
 #include "details.h"
 
@@ -88,18 +87,6 @@ MODULE_PROCESS(LoginModule)
 		msg.add("msg","notify");
 		msg.add("un",login->player->username);
 		msg.add("online","1");
-		list<Friend*>::iterator i;
-		if (login->player != NULL) {
-			for (i = login->player->friends.begin(); i != login->player->friends.end(); ++i) {
-				if (*i == NULL) continue;
-				if ((*i)->player == NULL) continue;
-				Login* log = UserMap::getLogin((*i)->player->username + "@lobby");	
-				if  (log == NULL) continue;
-				cerr << "Sending notify message " << msg.dump() << " to " << log->player->id << endl;
-				log->sock->send(msg);
-				}
-			}
-		
 		c->set_room(NULL);
 	}
 	if (! d->commit()) {
@@ -284,17 +271,6 @@ MODULE_PROCESS(DisconnectModule)
 			msg.add("msg","notify");
 			msg.add("un",login->player->username);
 			msg.add("online","0");
-			list<Friend*>::iterator i;
-			if (login->player != NULL) {
-				for (i = login->player->friends.begin(); i != login->player->friends.end(); ++i) {
-					if (*i == NULL) continue;
-					if ((*i)->player == NULL) continue;
-					Login* log = UserMap::getLogin((*i)->player->username + "@lobby");	
-					if  (log == NULL) continue;
-					cerr << "Sending notify message " << msg.dump() << " to " << log->player->id << endl;
-					log->sock->send(msg);
-				}
-			}
 		}
 	}
 	return true;

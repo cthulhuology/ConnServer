@@ -11,6 +11,7 @@
 
 #include "message.h"
 #include "socket.h"
+#include <algorithm>
 
 #define VERSTR2(x,y) #x "_" #y
 #define VERSTR(x,y) VERSTR2(x,y)

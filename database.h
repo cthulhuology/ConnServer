@@ -7,6 +7,7 @@
 #ifndef __HAVE_DBCONNECT__
 #define __HAVE_DBCONNECT__
 
+#include <stdlib.h>
 #include <libpq-fe.h>
 #include <iostream>
 #include <string>

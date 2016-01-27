@@ -4,6 +4,7 @@
 // 
 
 #include "cache.h"
+#include <stdlib.h>
 
 Cache* Cache::cache = NULL;
 
@@ -95,7 +96,7 @@ Cache::fini()
 		d->rollback();
 		return false;
 	}
-	map<UInt64,ID>::iterator i;
+	map<long long,ID>::iterator i;
 	for (i = cache->obj_id_map.begin(); i != cache->obj_id_map.end(); ++i) {
 		delete i->second;
 	}
@@ -110,7 +111,7 @@ Cache::store()
 {
 	if (cache == NULL) return false;
 	bool retval = true;
-	map<UInt64,ID>::iterator i;
+	map<long long,ID>::iterator i;
 	Database* d = DBPool::grab();
 	d->begin();
 	for (i = cache->obj_id_map.begin(); i != cache->obj_id_map.end(); ++i) 
@@ -121,12 +122,12 @@ Cache::store()
 	return retval;
 }
 
-UInt64
+long long
 Cache::next()
 {
 	Database* d = DBPool::grab();
 	d->begin();
-	UInt64 retval = cache->next_guid;
+	long long retval = cache->next_guid;
 	cache->next_guid += 1;
 	if (! cache->save(d) || ! d->commit()) {
 		cerr << "[Cache::next] failed to allocate guid" << endl;
@@ -152,7 +153,7 @@ bool
 Cache::update(Message&  m)
 {
 	if (m["id"].empty() || m["obj"].empty()) return false;
-	UInt64 objid = Uint64_of_string(m["id"]);
+	long long objid = Uint64_of_string(m["id"]);
 	ID obj = cache->obj_id_map[objid];
 	if (obj == NULL) return true; // Object not in cache
 	obj->init(m["obj"]);

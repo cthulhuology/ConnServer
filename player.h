@@ -6,11 +6,11 @@
 #ifndef __HAVE_PLAYER_H__
 #define __HAVE_PLAYER_H__
 
+#include "object.h"
 #include "cache.h"
-
-class Friend;
-class Post;
-class Details;
+#include <list>
+#include <algorithm>
+#include "details.h"
 
 class Player : public Object {
 	public:
@@ -18,8 +18,6 @@ class Player : public Object {
 		string password;
 		string avatar;
 		Details* details;
-		list<Friend*> friends;
-		list<Post*> posts;
 
 	COMMON_METHODS(Player)
 };

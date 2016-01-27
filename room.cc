@@ -11,6 +11,7 @@
 #include "server.h"
 #include "util.h"
 #include "login.h"
+#include <algorithm>
 
 Room::Room(const string& s) : name(s)
 {

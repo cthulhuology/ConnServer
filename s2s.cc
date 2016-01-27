@@ -128,3 +128,7 @@ ServerMap::ServerMap(const string& s)
 	: name(s)
 {
 }
+
+ServerMap::~ServerMap()
+{
+}

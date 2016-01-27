@@ -3,8 +3,8 @@ all : ConnServer dbtool modules
 
 include .config
 
-SRCS = administrators.cc cache.cc cs.cc database.cc details.cc dir.cc env.cc event.cc friend.cc interp.cc login.cc \
-	message.cc module.cc object.cc player.cc pool.cc post.cc room.cc s2s.cc server.cc socket.cc user_map.cc util.cc
+SRCS = administrators.cc cache.cc cs.cc database.cc details.cc dir.cc env.cc event.cc interp.cc login.cc \
+	message.cc module.cc object.cc player.cc pool.cc room.cc s2s.cc server.cc socket.cc user_map.cc util.cc
 
 OBJS = $(patsubst %.cc,%.o,$(SRCS))
 

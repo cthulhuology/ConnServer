@@ -14,6 +14,7 @@
 #include <vector>
 #include <map>
 #include <iostream>
+#include <algorithm>
 
 #define MSG_CHECK(x) if (! m.check( x )) return c->send(m);
 
